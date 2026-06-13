@@ -823,6 +823,10 @@ h3 {
   grid-column: span 2;
 }
 
+.demo-card:not(:first-child) {
+  grid-template-columns: 1fr;
+}
+
 .demo-card img {
   width: 100%;
   height: 100%;
@@ -830,6 +834,12 @@ h3 {
   object-fit: cover;
   object-position: top center;
   transition: transform 420ms ease;
+}
+
+.demo-card:not(:first-child) img {
+  min-height: 220px;
+  max-height: 240px;
+  height: 240px;
 }
 
 .demo-card:hover img {
