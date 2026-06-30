@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#fff"/>
+  <!-- Shield icon -->
+  <path d="M44 24 L74 24 L74 72 Q74 94 59 106 Q44 94 44 72 Z" fill="#003087"/>
+  <path d="M50 30 L68 30 L68 70 Q68 87 59 97 Q50 87 50 70 Z" fill="#1a50a0"/>
+  <!-- Check inside shield -->
+  <polyline points="51,62 57,70 68,50" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Text -->
+  <text x="88" y="56" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#c8102e" letter-spacing="2">INSURE</text>
+  <text x="88" y="76" font-family="Arial Black, sans-serif" font-size="20" font-weight="900" fill="#003087" letter-spacing="1">trust</text>
+  <line x1="88" y1="84" x2="280" y2="84" stroke="#003087" stroke-width="1.5"/>
+  <text x="88" y="98" font-family="Arial, sans-serif" font-size="8" fill="#aaa" letter-spacing="2">CYBER INSURANCE SPECIALISTS</text>
+</svg>

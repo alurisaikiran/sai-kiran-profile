@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#fff"/>
+  <!-- Decorative frame / medallion -->
+  <circle cx="50" cy="78" r="36" fill="none" stroke="#8b1a1a" stroke-width="2"/>
+  <circle cx="50" cy="78" r="30" fill="#8b1a1a"/>
+  <!-- M monogram -->
+  <text x="50" y="88" font-family="Georgia, serif" font-size="28" font-weight="700" fill="#c9a84c" text-anchor="middle">M</text>
+  <!-- Text -->
+  <text x="96" y="64" font-family="Georgia, serif" font-size="18" font-weight="700" fill="#8b1a1a" letter-spacing="1">Maggiano's</text>
+  <line x1="96" y1="72" x2="292" y2="72" stroke="#c9a84c" stroke-width="1.5"/>
+  <text x="96" y="88" font-family="Georgia, serif" font-size="11" fill="#555" letter-spacing="3">LITTLE ITALY</text>
+  <text x="96" y="104" font-family="Arial, sans-serif" font-size="8" fill="#aaa" letter-spacing="2">ITALIAN RESTAURANT</text>
+</svg>

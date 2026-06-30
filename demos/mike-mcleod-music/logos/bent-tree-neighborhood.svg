@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#f5f2ed"/>
+  <!-- Tree icon -->
+  <polygon points="48,22 22,70 74,70" fill="#3a5a2a"/>
+  <polygon points="48,40 26,80 70,80" fill="#4a6e38"/>
+  <polygon points="48,56 28,90 68,90" fill="#5a8048"/>
+  <rect x="44" y="88" width="8" height="22" fill="#7a5a2a"/>
+  <!-- Bent trunk -->
+  <path d="M48 108 Q42 118 38 128" stroke="#7a5a2a" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <!-- Text -->
+  <text x="88" y="52" font-family="Georgia, serif" font-size="20" font-weight="700" fill="#2a4a1a" letter-spacing="1">BENT TREE</text>
+  <line x1="88" y1="60" x2="280" y2="60" stroke="#3a5a2a" stroke-width="1.5"/>
+  <text x="88" y="76" font-family="Arial, sans-serif" font-size="9" fill="#6a8a5a" letter-spacing="3">NEIGHBORHOOD</text>
+  <text x="88" y="92" font-family="Arial, sans-serif" font-size="8" fill="#aaa" letter-spacing="2">COMMUNITY</text>
+</svg>

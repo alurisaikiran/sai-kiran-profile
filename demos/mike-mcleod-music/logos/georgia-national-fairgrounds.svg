@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#fff"/>
+  <rect x="0" y="128" width="320" height="32" fill="#003087"/>
+  <!-- Peach icon -->
+  <ellipse cx="44" cy="62" rx="24" ry="28" fill="#f4845f"/>
+  <path d="M44 34 Q52 24 58 30" stroke="#5a8a3a" stroke-width="2" fill="none"/>
+  <ellipse cx="40" cy="58" rx="10" ry="16" fill="#f9a880" opacity="0.5"/>
+  <path d="M44 90 Q44 80 44 72" stroke="#d4604a" stroke-width="1.5" fill="none"/>
+  <!-- Text -->
+  <text x="80" y="50" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="#003087" letter-spacing="1.5">GEORGIA NATIONAL</text>
+  <text x="80" y="66" font-family="Arial Black, sans-serif" font-size="13" font-weight="900" fill="#c8102e" letter-spacing="1">FAIRGROUNDS</text>
+  <text x="80" y="82" font-family="Arial, sans-serif" font-size="9" fill="#555" letter-spacing="1">&amp; AGRICENTER</text>
+  <line x1="80" y1="90" x2="270" y2="90" stroke="#003087" stroke-width="1"/>
+  <text x="80" y="104" font-family="Arial, sans-serif" font-size="8" fill="#aaa" letter-spacing="1">PERRY, GEORGIA</text>
+  <text x="88" y="148" font-family="Arial, sans-serif" font-size="9" fill="#c9a84c" letter-spacing="2">EST. 1990</text>
+</svg>

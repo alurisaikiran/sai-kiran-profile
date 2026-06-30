@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#fff"/>
+  <!-- K lettermark circle -->
+  <circle cx="50" cy="78" r="34" fill="#1a3a5c"/>
+  <text x="50" y="90" font-family="Arial Black, sans-serif" font-size="30" font-weight="900" fill="#fff" text-anchor="middle">K</text>
+  <!-- Gold accent arc -->
+  <path d="M22 60 Q50 44 78 60" stroke="#c9a84c" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- Text -->
+  <text x="96" y="68" font-family="Arial Black, sans-serif" font-size="16" font-weight="900" fill="#1a3a5c" letter-spacing="1">KELMAR</text>
+  <line x1="96" y1="76" x2="288" y2="76" stroke="#c9a84c" stroke-width="1.5"/>
+  <text x="96" y="92" font-family="Arial, sans-serif" font-size="10" fill="#555" letter-spacing="2">EVENTS</text>
+  <text x="96" y="108" font-family="Arial, sans-serif" font-size="8" fill="#bbb" letter-spacing="2">ATLANTA, GEORGIA</text>
+</svg>

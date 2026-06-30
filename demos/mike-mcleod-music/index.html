@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mike McLeod Music brings solo live event performance with a full-band sound for Atlanta weddings, parties, corporate events, and private celebrations.">
+  <meta property="og:title" content="Mike McLeod Music | Solo Performer, Full Band Sound">
+  <meta property="og:description" content="Atlanta live event musician Mike McLeod performs familiar songs with looping, guitar, vocals, and studio-quality sound.">
+  <meta property="og:image" content="https://mikemcleodmusic.com/wp-content/uploads/2023/11/site-pic-3.jpg">
+  <meta property="og:type" content="website">
+  <title>Mike McLeod Music | Live Event Musician</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .about-bio { display: grid; grid-template-columns: 1fr 1.6fr; gap: 6vw; align-items: start; background: var(--paper); padding: 7vw 8vw; }
+    .about-photo { position: relative; }
+    .about-photo img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 4px; display: block; }
+    .about-photo-badge { position: absolute; bottom: -18px; right: -18px; background: var(--rust); color: #fff; padding: 18px 22px; border-radius: 4px; text-align: center; }
+    .about-photo-badge strong { display: block; font-family: "Archivo Black", sans-serif; font-size: 1.8rem; line-height: 1; }
+    .about-photo-badge span { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; opacity: .85; }
+    .about-text { padding-top: 10px; }
+    .about-text h2 { font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.05; margin: 12px 0 28px; }
+    .about-text p { color: var(--muted); line-height: 1.85; margin-bottom: 20px; max-width: 580px; }
+    .about-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--line); }
+    .about-stats div strong { display: block; font-family: "Archivo Black", sans-serif; font-size: 2.2rem; color: var(--ink); }
+    .about-stats div span { display: block; font-size: .72rem; color: var(--muted); margin-top: 4px; letter-spacing: .04em; }
+    .instruments-section { background: var(--ink); color: #fff; padding: 7vw 8vw; }
+    .instruments-section .eyebrow { color: var(--rust); }
+    .instruments-section h2 { color: #fff; font-size: clamp(2rem, 3.5vw, 3rem); margin: 12px 0 40px; }
+    .instruments-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+    .instrument-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 10px; padding: 28px 22px; }
+    .instrument-card .icon { font-size: 1.8rem; margin-bottom: 14px; }
+    .instrument-card h3 { font-size: .95rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .instrument-card p { font-size: .78rem; color: rgba(255,255,255,.55); line-height: 1.6; margin: 0; }
+    .how-section { background: var(--cream); padding: 7vw 8vw; }
+    .how-section h2 { font-size: clamp(2rem, 3.5vw, 3rem); margin: 12px 0 50px; max-width: 600px; }
+    .how-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
+    .how-step { position: relative; padding-left: 20px; border-left: 3px solid var(--rust); }
+    .how-step .step-num { font-family: "Archivo Black", sans-serif; font-size: 3rem; color: var(--rust); opacity: .18; line-height: 1; margin-bottom: 8px; }
+    .how-step h3 { font-size: 1rem; font-weight: 700; margin-bottom: 10px; }
+    .how-step p { font-size: .82rem; color: var(--muted); line-height: 1.75; margin: 0; }
+    .about-cta { background: var(--ink); color: #fff; padding: 6vw 8vw; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+    .about-cta h2 { color: #fff; font-size: clamp(1.8rem, 3vw, 2.6rem); margin: 0; max-width: 500px; }
+    .about-cta-buttons { display: flex; gap: 14px; flex-shrink: 0; }
+    @media (max-width: 780px) {
+      .about-bio { grid-template-columns: 1fr; }
+      .about-photo-badge { right: 16px; }
+      .instruments-grid { grid-template-columns: repeat(2,1fr); }
+      .how-steps { grid-template-columns: 1fr; }
+      .about-cta { flex-direction: column; align-items: flex-start; }
+      .about-photo-strip { grid-template-columns: repeat(2,1fr) !important; }
+      .about-photo-strip img { height: 200px !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="#home"><span>Mike</span> McLeod</a>
+    <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="credentials.html">Credentials</a>
+      <a href="photos.html">Photos</a>
+      <a href="videos.html">Videos</a>
+      <a href="reviews.html">Reviews</a>
+      <a class="nav-cta" href="booking.html">Booking</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <iframe class="hero-youtube" src="https://www.youtube-nocookie.com/embed/lbnCePKQ9xg?autoplay=1&mute=1&controls=0&playsinline=1&loop=1&playlist=lbnCePKQ9xg&start=197&rel=0&modestbranding=1" title="Mike McLeod Music background performance video" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>
+      <div class="hero-overlay"></div>
+      <div class="hero-wordmark" aria-label="Mike McLeod">
+        <span>Mike</span>
+        <strong>McLeod</strong>
+      </div>
+      <div class="hero-content">
+        <p class="eyebrow">Atlanta musician &middot; Solo performer &middot; Full-band sound</p>
+        <h1>Live music your guests know and love.</h1>
+        <a class="button primary" href="booking.html">Book amazing live music</a>
+      </div>
+      <a class="scroll-hint" href="#release">Explore <span>&darr;</span></a>
+    </section>
+
+    <!-- About Bio -->
+    <section class="about-bio" id="about">
+      <div class="about-photo">
+        <img src="https://mikemcleodmusic.com/wp-content/uploads/2023/11/main.jpg" alt="Mike McLeod performing live">
+        <div class="about-photo-badge">
+          <strong>20+</strong>
+          <span>Years performing</span>
+        </div>
+      </div>
+      <div class="about-text">
+        <p class="eyebrow">The background</p>
+        <h2>Decades of live and studio experience in Atlanta.</h2>
+        <p>Mike McLeod has spent over 20 years performing across the Atlanta area — clubs, corporate stages, private estates, and waterfront venues. He came up as a guitarist and songwriter, worked in recording studios, and developed his looping technique to bring a full band's worth of sound to solo bookings.</p>
+        <p>His sets move with the room. Arrival and cocktail hour get warm, acoustic-leaning sounds. As the night builds so does the energy — Mike layers in more instruments, lifts the tempo, and meets the crowd where they are. By the time the room is ready to dance, the set sounds like a full band is playing.</p>
+        <p>He performs across all genres — pop, rock, country, R&amp;B, jazz, and everything in between — making him equally at home at a black-tie gala or a backyard celebration.</p>
+        <div class="about-stats">
+          <div><strong>100s</strong><span>Atlanta gigs performed</span></div>
+          <div><strong>20+</strong><span>Years in the business</span></div>
+          <div><strong>5★</strong><span>Consistent reviews</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Instruments -->
+    <section class="instruments-section">
+      <p class="eyebrow">The setup</p>
+      <h2>Many instruments. One performer.</h2>
+      <div class="instruments-grid">
+        <div class="instrument-card">
+          <div class="icon">🎸</div>
+          <h3>Guitar</h3>
+          <p>Acoustic and electric. The foundation of every set, from fingerpicking intros to driving rock rhythms.</p>
+        </div>
+        <div class="instrument-card">
+          <div class="icon">🎹</div>
+          <h3>Keys &amp; Bass</h3>
+          <p>Keyboards and bass lines layered live to fill out the low end and harmonic depth of the mix.</p>
+        </div>
+        <div class="instrument-card">
+          <div class="icon">🎤</div>
+          <h3>Vocals &amp; Harmonies</h3>
+          <p>Live vocal harmonies looped in real time — no pre-recorded tracks, no backing tapes.</p>
+        </div>
+        <div class="instrument-card">
+          <div class="icon">🎻</div>
+          <h3>Mandolin &amp; Lap Steel</h3>
+          <p>Mandolin, lap steel, and auxiliary instruments that add texture and genre range to the sound.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-section">
+      <p class="eyebrow">How it works</p>
+      <h2>The flow of a Mike McLeod event.</h2>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="step-num">01</div>
+          <h3>Arrival &amp; Cocktail Hour</h3>
+          <p>Warm acoustic tones, soft fingerpicking, and ambient layers set the mood as guests arrive and settle in.</p>
+        </div>
+        <div class="how-step">
+          <div class="step-num">02</div>
+          <h3>Dinner &amp; Mid-Event</h3>
+          <p>The sound builds gradually — more instruments added via the looping rig, tempo picks up, energy starts to lift.</p>
+        </div>
+        <div class="how-step">
+          <div class="step-num">03</div>
+          <h3>Peak Energy</h3>
+          <p>By the time the room is ready to dance, the set sounds like a full band is playing — live, layered, and audience-driven.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Photo strip -->
+    <div class="about-photo-strip" style="display:grid; grid-template-columns:repeat(4,1fr); gap:0;">
+      <img src="https://mikemcleodmusic.com/wp-content/uploads/2023/11/04-rotated.jpeg" alt="Mike McLeod at an evening event" style="width:100%; height:280px; object-fit:cover; display:block;">
+      <img src="https://mikemcleodmusic.com/wp-content/uploads/2023/11/01.jpg" alt="Mike McLeod performing live in Atlanta" style="width:100%; height:280px; object-fit:cover; display:block;">
+      <img src="https://mikemcleodmusic.com/wp-content/uploads/2023/11/Bold-Monk-Brewery-scaled.jpg" alt="Mike McLeod at Bold Monk Brewery" style="width:100%; height:280px; object-fit:cover; display:block;">
+      <img src="https://mikemcleodmusic.com/wp-content/uploads/2023/11/05-Sunset-Cruise-Lake-Lanier.jpg" alt="Mike McLeod on Lake Lanier sunset cruise" style="width:100%; height:280px; object-fit:cover; display:block; object-position: center 30%;">
+    </div>
+
+    <!-- CTA -->
+    <section class="about-cta">
+      <h2>Ready to add live music to your event?</h2>
+      <div class="about-cta-buttons">
+        <a class="button primary" href="booking.html">Check Availability</a>
+        <a class="button outline" href="credentials.html">See Credentials</a>
+      </div>
+    </section>
+
+    <!-- Song List -->
+    <section class="setlist-section" id="music">
+      <div class="setlist-header">
+        <div>
+          <p class="eyebrow">Song list</p>
+          <h2>Familiar songs, shaped for the moment.</h2>
+        </div>
+      </div>
+      <div class="setlist-columns">
+        <div class="setlist-group">
+          <div class="setlist-genre-label">Classic Rock &middot; 80s &middot; 90s &middot; &amp; More</div>
+          <ol class="setlist-rows">
+            <li><span class="sl-num">01</span><span class="sl-title">All Right Now</span><span class="sl-artist">Free</span></li>
+            <li><span class="sl-num">02</span><span class="sl-title">And She Was</span><span class="sl-artist">Talking Heads</span></li>
+            <li><span class="sl-num">03</span><span class="sl-title">Bang a Gong</span><span class="sl-artist">T. Rex</span></li>
+            <li><span class="sl-num">04</span><span class="sl-title">Basket Case</span><span class="sl-artist">Green Day</span></li>
+            <li><span class="sl-num">05</span><span class="sl-title">Beast of Burden</span><span class="sl-artist">Rolling Stones</span></li>
+            <li><span class="sl-num">06</span><span class="sl-title">Behind Blue Eyes</span><span class="sl-artist">The Who</span></li>
+            <li><span class="sl-num">07</span><span class="sl-title">The Breakup Song</span><span class="sl-artist">Greg Kihn</span></li>
+            <li><span class="sl-num">08</span><span class="sl-title">Burning Love</span><span class="sl-artist">Elvis Presley</span></li>
+            <li><span class="sl-num">09</span><span class="sl-title">Can't You See</span><span class="sl-artist">Marshall Tucker</span></li>
+            <li><span class="sl-num">10</span><span class="sl-title">Cheap Sunglasses</span><span class="sl-artist">ZZ Top</span></li>
+            <li><span class="sl-num">11</span><span class="sl-title">Crossfire</span><span class="sl-artist">Stevie Ray Vaughan</span></li>
+            <li><span class="sl-num">12</span><span class="sl-title">D'yer Mak'er</span><span class="sl-artist">Led Zeppelin</span></li>
+            <li><span class="sl-num">13</span><span class="sl-title">Dancing In The Dark</span><span class="sl-artist">Bruce Springsteen</span></li>
+            <li><span class="sl-num">14</span><span class="sl-title">Do It Again</span><span class="sl-artist">Steely Dan</span></li>
+            <li><span class="sl-num">15</span><span class="sl-title">Don't Do Me Like That</span><span class="sl-artist">Tom Petty</span></li>
+            <li><span class="sl-num">16</span><span class="sl-title">Europa</span><span class="sl-artist">Carlos Santana</span></li>
+            <li><span class="sl-num">17</span><span class="sl-title">Evil Woman</span><span class="sl-artist">Electric Light Orchestra</span></li>
+            <li><span class="sl-num">18</span><span class="sl-title">Further On Up The Road</span><span class="sl-artist">Bonamassa / Clapton</span></li>
+            <li><span class="sl-num">19</span><span class="sl-title">Give Me One Reason</span><span class="sl-artist">Tracy Chapman</span></li>
+            <li><span class="sl-num">20</span><span class="sl-title">Hello I Love You</span><span class="sl-artist">The Doors</span></li>
+            <li><span class="sl-num">21</span><span class="sl-title">Here Comes The Sun</span><span class="sl-artist">Beatles</span></li>
+            <li><span class="sl-num">22</span><span class="sl-title">Hollywood Nights</span><span class="sl-artist">Bob Seger</span></li>
+            <li><span class="sl-num">23</span><span class="sl-title">Hotel California</span><span class="sl-artist">Eagles</span></li>
+            <li><span class="sl-num">24</span><span class="sl-title">Hungry Heart</span><span class="sl-artist">Bruce Springsteen</span></li>
+            <li><span class="sl-num">25</span><span class="sl-title">I Ain't Even Done with The Night</span><span class="sl-artist">John Mellencamp</span></li>
+            <li><span class="sl-num">26</span><span class="sl-title">I Knew You Were Trouble</span><span class="sl-artist">Taylor Swift</span></li>
+            <li><span class="sl-num">27</span><span class="sl-title">I Melt With You</span><span class="sl-artist">Modern English</span></li>
+            <li><span class="sl-num">28</span><span class="sl-title">I Shot the Sheriff</span><span class="sl-artist">Eric Clapton</span></li>
+            <li><span class="sl-num">29</span><span class="sl-title">If It Makes You Happy</span><span class="sl-artist">Sheryl Crow</span></li>
+            <li><span class="sl-num">30</span><span class="sl-title">Jumpin Jack Flash</span><span class="sl-artist">Rolling Stones</span></li>
+            <li><span class="sl-num">31</span><span class="sl-title">Learning to Fly</span><span class="sl-artist">Tom Petty</span></li>
+            <li><span class="sl-num">32</span><span class="sl-title">Let's Stick Together</span><span class="sl-artist">Bryan Ferry</span></li>
+            <li><span class="sl-num">33</span><span class="sl-title">Little Martha</span><span class="sl-artist">Allman Brothers</span></li>
+            <li><span class="sl-num">34</span><span class="sl-title">Money</span><span class="sl-artist">Pink Floyd</span></li>
+            <li><span class="sl-num">35</span><span class="sl-title">One Thing Leads to Another</span><span class="sl-artist">The Fixx</span></li>
+            <li><span class="sl-num">36</span><span class="sl-title">One Way Out</span><span class="sl-artist">Allman Brothers</span></li>
+            <li><span class="sl-num">37</span><span class="sl-title">Please Come Home for Christmas</span><span class="sl-artist">Eagles</span></li>
+            <li><span class="sl-num">38</span><span class="sl-title">Power of Love</span><span class="sl-artist">Huey Lewis &amp; The News</span></li>
+            <li><span class="sl-num">39</span><span class="sl-title">Riders on the Storm</span><span class="sl-artist">The Doors</span></li>
+            <li><span class="sl-num">40</span><span class="sl-title">Somebody's Baby</span><span class="sl-artist">Jackson Browne</span></li>
+            <li><span class="sl-num">41</span><span class="sl-title">Sultans of Swing</span><span class="sl-artist">Dire Straits</span></li>
+            <li><span class="sl-num">42</span><span class="sl-title">Tempted</span><span class="sl-artist">Squeeze</span></li>
+            <li><span class="sl-num">43</span><span class="sl-title">The Joker</span><span class="sl-artist">Steve Miller</span></li>
+            <li><span class="sl-num">44</span><span class="sl-title">The Weight</span><span class="sl-artist">The Band</span></li>
+            <li><span class="sl-num">45</span><span class="sl-title">Third World Man</span><span class="sl-artist">Steely Dan</span></li>
+            <li><span class="sl-num">46</span><span class="sl-title">Ventura Highway</span><span class="sl-artist">America</span></li>
+            <li><span class="sl-num">47</span><span class="sl-title">Werewolves of London</span><span class="sl-artist">Warren Zevon</span></li>
+            <li><span class="sl-num">48</span><span class="sl-title">Wicked Game</span><span class="sl-artist">Chris Isaak</span></li>
+          </ol>
+        </div>
+        <div class="setlist-group">
+          <div class="setlist-genre-label">Dance &middot; R&amp;B &middot; Top 40</div>
+          <ol class="setlist-rows">
+            <li><span class="sl-num">01</span><span class="sl-title">Bad Dreams</span><span class="sl-artist">Teddy Swims</span></li>
+            <li><span class="sl-num">02</span><span class="sl-title">Bad Habits</span><span class="sl-artist">Ed Sheeran</span></li>
+            <li><span class="sl-num">03</span><span class="sl-title">Brick House</span><span class="sl-artist">The Commodores</span></li>
+            <li><span class="sl-num">04</span><span class="sl-title">Cold Heart</span><span class="sl-artist">Elton John &amp; Dua Lipa</span></li>
+            <li><span class="sl-num">05</span><span class="sl-title">Couldn't Get It Right</span><span class="sl-artist">Climax Blues Band</span></li>
+            <li><span class="sl-num">06</span><span class="sl-title">Feeling Alright</span><span class="sl-artist">Joe Cocker</span></li>
+            <li><span class="sl-num">07</span><span class="sl-title">Fresh</span><span class="sl-artist">Kool &amp; the Gang</span></li>
+            <li><span class="sl-num">08</span><span class="sl-title">Get Down On It</span><span class="sl-artist">Kool &amp; the Gang</span></li>
+            <li><span class="sl-num">09</span><span class="sl-title">Green Onions</span><span class="sl-artist">Booker T. &amp; the MG's</span></li>
+            <li><span class="sl-num">10</span><span class="sl-title">How Long</span><span class="sl-artist">Ace</span></li>
+            <li><span class="sl-num">11</span><span class="sl-title">How Sweet It Is</span><span class="sl-artist">James Taylor</span></li>
+            <li><span class="sl-num">12</span><span class="sl-title">I Can't Go for That</span><span class="sl-artist">Hall &amp; Oates</span></li>
+            <li><span class="sl-num">13</span><span class="sl-title">I Just Might</span><span class="sl-artist">Bruno Mars</span></li>
+            <li><span class="sl-num">14</span><span class="sl-title">I Keep Forgetting</span><span class="sl-artist">Michael McDonald</span></li>
+            <li><span class="sl-num">15</span><span class="sl-title">It Ain't Over Til It's Over</span><span class="sl-artist">Lenny Kravitz</span></li>
+            <li><span class="sl-num">16</span><span class="sl-title">Low Rider</span><span class="sl-artist">War</span></li>
+            <li><span class="sl-num">17</span><span class="sl-title">Mustang Sally</span><span class="sl-artist">Wilson Pickett</span></li>
+            <li><span class="sl-num">18</span><span class="sl-title">Pick Up The Pieces</span><span class="sl-artist">Average White Band</span></li>
+            <li><span class="sl-num">19</span><span class="sl-title">Play That Funky Music</span><span class="sl-artist">Wild Cherry</span></li>
+            <li><span class="sl-num">20</span><span class="sl-title">Roll With It</span><span class="sl-artist">Steve Winwood</span></li>
+            <li><span class="sl-num">21</span><span class="sl-title">Sara Smile</span><span class="sl-artist">Hall &amp; Oates</span></li>
+            <li><span class="sl-num">22</span><span class="sl-title">Stayin' Alive</span><span class="sl-artist">Bee Gees</span></li>
+            <li><span class="sl-num">23</span><span class="sl-title">Take Me To The River</span><span class="sl-artist">Al Green</span></li>
+            <li><span class="sl-num">24</span><span class="sl-title">Takin' It To The Streets</span><span class="sl-artist">Doobie Brothers</span></li>
+            <li><span class="sl-num">25</span><span class="sl-title">Valerie</span><span class="sl-artist">Amy Winehouse</span></li>
+            <li><span class="sl-num">26</span><span class="sl-title">Will It Go Round in Circles</span><span class="sl-artist">Billy Preston</span></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="logo" href="#home"><span>Mike</span> McLeod</a>
+    <p>Solo performer. Full-band sound. Atlanta, GA. 404-663-1407.</p>
+    <div><a href="http://facebook.com/MikeMcLeodMusic" target="_blank" rel="noreferrer">Facebook</a><a href="http://www.youtube.com/@MikeMcLeodMusic" target="_blank" rel="noreferrer">YouTube</a><a href="mailto:MikeMcLeodMusic@gmail.com">Email</a></div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

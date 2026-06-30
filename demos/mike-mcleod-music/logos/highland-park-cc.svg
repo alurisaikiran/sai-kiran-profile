@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#fff"/>
+  <!-- Crest shield -->
+  <path d="M44 24 L76 24 L76 72 Q76 96 60 108 Q44 96 44 72 Z" fill="#1a4a1a"/>
+  <path d="M48 28 L72 28 L72 70 Q72 90 60 100 Q48 90 48 70 Z" fill="#2a6a2a"/>
+  <!-- Golf flag inside shield -->
+  <rect x="57" y="36" width="2" height="36" fill="#c9a84c"/>
+  <polygon points="59,36 59,50 70,43" fill="#c9a84c"/>
+  <!-- Text -->
+  <text x="90" y="56" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1a4a1a" letter-spacing="1">HIGHLAND PARK</text>
+  <line x1="90" y1="62" x2="288" y2="62" stroke="#c9a84c" stroke-width="1.5"/>
+  <text x="90" y="76" font-family="Georgia, serif" font-size="10" fill="#2a6a2a" letter-spacing="2">COUNTRY CLUB</text>
+  <text x="90" y="92" font-family="Arial, sans-serif" font-size="8" fill="#aaa" letter-spacing="2">EST. ATLANTA, GA</text>
+</svg>

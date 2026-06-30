@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#fff"/>
+  <!-- Art deco W emblem -->
+  <polygon points="44,26 28,110 36,110 44,62 52,94 60,62 68,110 76,110 60,26 52,58" fill="#1a1a1a"/>
+  <!-- Gold accent bar -->
+  <rect x="24" y="112" width="56" height="4" fill="#c9a84c"/>
+  <!-- Text -->
+  <text x="92" y="62" font-family="Georgia, serif" font-size="20" font-weight="700" fill="#1a1a1a" letter-spacing="4">WHITLEY</text>
+  <line x1="92" y1="70" x2="295" y2="70" stroke="#c9a84c" stroke-width="2"/>
+  <text x="92" y="86" font-family="Georgia, serif" font-size="9" fill="#555" letter-spacing="4">HOTEL</text>
+  <text x="92" y="102" font-family="Arial, sans-serif" font-size="8" fill="#aaa" letter-spacing="2">BUCKHEAD · ATLANTA</text>
+</svg>

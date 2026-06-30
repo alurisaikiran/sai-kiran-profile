@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#0a1f44"/>
+  <!-- N lettermark -->
+  <rect x="22" y="36" width="10" height="60" fill="#c9a84c"/>
+  <polygon points="22,36 32,36 68,84 68,96 58,96 22,48" fill="#c9a84c"/>
+  <rect x="58" y="36" width="10" height="60" fill="#c9a84c"/>
+  <!-- Text -->
+  <text x="92" y="62" font-family="Georgia, serif" font-size="16" font-weight="700" fill="#fff" letter-spacing="1">THE NOUR</text>
+  <text x="92" y="80" font-family="Georgia, serif" font-size="13" fill="#c9a84c" letter-spacing="3">GROUP</text>
+  <line x1="92" y1="88" x2="280" y2="88" stroke="#c9a84c" stroke-width="0.5" opacity="0.6"/>
+  <text x="92" y="102" font-family="Arial, sans-serif" font-size="8" fill="#5a7a9a" letter-spacing="2">RELATIONSHIP ECONOMICS</text>
+</svg>

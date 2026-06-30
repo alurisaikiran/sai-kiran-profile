@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#fff"/>
+  <!-- Chi Phi shield crest -->
+  <path d="M60 20 L100 20 L100 85 Q100 110 80 122 Q60 110 60 85 Z" fill="#003087"/>
+  <path d="M66 27 L94 27 L94 83 Q94 104 80 114 Q66 104 66 83 Z" fill="#1a50a0"/>
+  <!-- Chi (X) and Phi (Φ) inside shield -->
+  <line x1="68" y1="40" x2="92" y2="75" stroke="#c9a84c" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="92" y1="40" x2="68" y2="75" stroke="#c9a84c" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="80" y1="80" x2="80" y2="108" stroke="#c9a84c" stroke-width="2.5" stroke-linecap="round"/>
+  <ellipse cx="80" cy="94" rx="9" ry="11" stroke="#c9a84c" stroke-width="2.5" fill="none"/>
+  <!-- Text -->
+  <text x="115" y="68" font-family="Georgia, serif" font-size="22" font-weight="700" fill="#003087" letter-spacing="2">Chi Phi</text>
+  <line x1="115" y1="76" x2="295" y2="76" stroke="#c9a84c" stroke-width="1.5"/>
+  <text x="115" y="92" font-family="Arial, sans-serif" font-size="9" fill="#888" letter-spacing="2">FRATERNITY</text>
+  <text x="115" y="106" font-family="Arial, sans-serif" font-size="8" fill="#aaa" letter-spacing="1">FOUNDED 1824</text>
+</svg>

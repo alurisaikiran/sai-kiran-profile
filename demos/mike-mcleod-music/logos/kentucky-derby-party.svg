@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#1a3a1a"/>
+  <!-- Horseshoe -->
+  <path d="M44 90 A26 26 0 1 1 76 90" stroke="#c9a84c" stroke-width="5" fill="none"/>
+  <rect x="40" y="88" width="8" height="18" rx="2" fill="#c9a84c"/>
+  <rect x="72" y="88" width="8" height="18" rx="2" fill="#c9a84c"/>
+  <!-- Rose accent -->
+  <circle cx="60" cy="56" r="6" fill="#c8102e" opacity="0.9"/>
+  <circle cx="56" cy="62" r="5" fill="#c8102e" opacity="0.8"/>
+  <circle cx="64" cy="62" r="5" fill="#c8102e" opacity="0.8"/>
+  <!-- Text -->
+  <text x="100" y="54" font-family="Georgia, serif" font-size="9" fill="#c9a84c" letter-spacing="2">NEIGHBORHOOD</text>
+  <text x="100" y="72" font-family="Georgia, serif" font-size="16" font-weight="700" fill="#fff" letter-spacing="1">KENTUCKY</text>
+  <text x="100" y="90" font-family="Georgia, serif" font-size="16" font-weight="700" fill="#c9a84c" letter-spacing="1">DERBY PARTY</text>
+  <line x1="100" y1="98" x2="290" y2="98" stroke="#c9a84c" stroke-width="0.5"/>
+</svg>

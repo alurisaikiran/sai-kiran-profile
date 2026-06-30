@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#fff"/>
+  <rect x="0" y="0" width="320" height="5" fill="#009999"/>
+  <!-- S icon circle -->
+  <circle cx="44" cy="80" r="32" fill="#009999"/>
+  <text x="31" y="91" font-family="Arial Black, sans-serif" font-size="34" font-weight="900" fill="#fff">S</text>
+  <!-- Text -->
+  <text x="90" y="91" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#009999" letter-spacing="2">SIEMENS</text>
+  <rect x="90" y="100" width="220" height="3" fill="#009999" opacity="0.3"/>
+</svg>

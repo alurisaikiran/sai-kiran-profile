@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#fff"/>
+  <!-- Blue bar -->
+  <rect x="0" y="0" width="8" height="160" fill="#00A0DF"/>
+  <!-- CS monogram -->
+  <text x="24" y="100" font-family="Arial Black, sans-serif" font-size="42" font-weight="900" fill="#00A0DF">CS</text>
+  <!-- Divider -->
+  <rect x="116" y="40" width="2" height="80" fill="#e0e0e0"/>
+  <!-- Text -->
+  <text x="128" y="68" font-family="Arial, sans-serif" font-size="11" fill="#555" letter-spacing="1">CHARLES</text>
+  <text x="128" y="88" font-family="Arial Black, sans-serif" font-size="20" font-weight="900" fill="#00A0DF" letter-spacing="1">SCHWAB</text>
+  <text x="128" y="104" font-family="Arial, sans-serif" font-size="8.5" fill="#888" letter-spacing="1">FINANCIAL SERVICES</text>
+</svg>

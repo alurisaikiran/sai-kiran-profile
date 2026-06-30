@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#1a0a2e"/>
+  <!-- Stage curtain arcs -->
+  <path d="M0 0 Q30 80 0 160" fill="#4a1a6a" opacity="0.6"/>
+  <path d="M0 0 Q18 80 0 160" fill="#6a2a8a" opacity="0.4"/>
+  <!-- Comedy mask -->
+  <circle cx="52" cy="60" r="26" fill="none" stroke="#c9a84c" stroke-width="2"/>
+  <circle cx="44" cy="56" r="3" fill="#c9a84c"/>
+  <circle cx="62" cy="56" r="3" fill="#c9a84c"/>
+  <path d="M42 70 Q52 80 62 70" stroke="#c9a84c" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- Text -->
+  <text x="92" y="52" font-family="Georgia, serif" font-size="22" font-weight="700" fill="#fff" letter-spacing="2">MUSE</text>
+  <text x="92" y="72" font-family="Georgia, serif" font-size="14" fill="#c9a84c" letter-spacing="4">THEATRE</text>
+  <line x1="92" y1="80" x2="290" y2="80" stroke="#c9a84c" stroke-width="0.5"/>
+  <text x="92" y="94" font-family="Arial, sans-serif" font-size="8" fill="#8a6aaa" letter-spacing="2">PERRY, GEORGIA</text>
+</svg>

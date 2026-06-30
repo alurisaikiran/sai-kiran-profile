@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#fff"/>
+  <!-- Cartessa elegant diamond icon -->
+  <polygon points="50,40 70,80 50,120 30,80" fill="#c8a96e"/>
+  <polygon points="50,40 70,80 50,120 30,80" fill="none" stroke="#a07840" stroke-width="1.5"/>
+  <!-- Inner diamond -->
+  <polygon points="50,52 64,80 50,108 36,80" fill="#e8c98e"/>
+  <!-- Text -->
+  <text x="88" y="68" font-family="Georgia, serif" font-size="18" font-weight="700" fill="#2c2c2c" letter-spacing="3">CARTESSA</text>
+  <line x1="88" y1="76" x2="288" y2="76" stroke="#c8a96e" stroke-width="1"/>
+  <text x="88" y="92" font-family="Arial, sans-serif" font-size="9" fill="#888" letter-spacing="3">AESTHETICS</text>
+  <text x="88" y="108" font-family="Arial, sans-serif" font-size="7.5" fill="#bbb" letter-spacing="2">MEDICAL AESTHETICS</text>
+</svg>

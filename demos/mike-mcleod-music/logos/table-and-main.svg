@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#fff"/>
+  <!-- Fork and knife icon -->
+  <rect x="36" y="28" width="4" height="50" rx="2" fill="#4a3728"/>
+  <path d="M36 28 Q36 44 40 50 Q44 44 44 28Z" fill="#4a3728"/>
+  <rect x="58" y="28" width="4" height="50" rx="2" fill="#4a3728"/>
+  <path d="M56 28 L56 42 Q56 48 60 48 Q64 48 64 42 L64 28" stroke="#4a3728" stroke-width="1" fill="none"/>
+  <!-- Wheat stalk decoration -->
+  <line x1="50" y1="86" x2="50" y2="106" stroke="#8b6a3a" stroke-width="2"/>
+  <ellipse cx="46" cy="90" rx="4" ry="6" fill="#c9a84c" transform="rotate(-20 46 90)"/>
+  <ellipse cx="54" cy="90" rx="4" ry="6" fill="#c9a84c" transform="rotate(20 54 90)"/>
+  <ellipse cx="48" cy="96" rx="4" ry="6" fill="#c9a84c" transform="rotate(-15 48 96)"/>
+  <ellipse cx="52" cy="96" rx="4" ry="6" fill="#c9a84c" transform="rotate(15 52 96)"/>
+  <!-- Text -->
+  <text x="82" y="62" font-family="Georgia, serif" font-size="17" font-weight="700" fill="#2a1e14" letter-spacing="2">TABLE &amp; MAIN</text>
+  <line x1="82" y1="70" x2="292" y2="70" stroke="#c9a84c" stroke-width="1.5"/>
+  <text x="82" y="86" font-family="Arial, sans-serif" font-size="9" fill="#8b6a3a" letter-spacing="2">ROSWELL, GEORGIA</text>
+  <text x="82" y="100" font-family="Arial, sans-serif" font-size="8" fill="#bbb" letter-spacing="1">SEASONAL AMERICAN CUISINE</text>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#fff"/>
+  <!-- Peach tree motif -->
+  <circle cx="46" cy="52" r="22" fill="#2d5a27"/>
+  <circle cx="34" cy="64" r="14" fill="#3a7032"/>
+  <circle cx="58" cy="64" r="14" fill="#3a7032"/>
+  <rect x="43" y="72" width="6" height="28" fill="#7a4a1e"/>
+  <!-- Peach fruit -->
+  <circle cx="46" cy="46" r="6" fill="#f4a460"/>
+  <circle cx="36" cy="58" r="5" fill="#f4a460"/>
+  <circle cx="56" cy="54" r="5" fill="#f4a460"/>
+  <!-- Text -->
+  <text x="86" y="58" font-family="Georgia, serif" font-size="15" font-weight="700" fill="#1a3d18" letter-spacing="1">THE PEACHTREE</text>
+  <line x1="86" y1="66" x2="295" y2="66" stroke="#c9a84c" stroke-width="1.5"/>
+  <text x="86" y="82" font-family="Georgia, serif" font-size="11" fill="#2d5a27" letter-spacing="3">CLUB</text>
+  <text x="86" y="98" font-family="Arial, sans-serif" font-size="8" fill="#aaa" letter-spacing="2">ATLANTA, GEORGIA</text>
+</svg>

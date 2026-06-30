@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#fff"/>
+  <!-- Golf flag -->
+  <rect x="30" y="25" width="3" height="80" fill="#2a4a1a"/>
+  <polygon points="33,25 33,52 60,38" fill="#c8102e"/>
+  <!-- Hill line -->
+  <path d="M18 110 Q40 90 60 105 Q80 118 100 108" stroke="#2a4a1a" stroke-width="2" fill="none"/>
+  <!-- Text -->
+  <rect x="0" y="130" width="320" height="30" fill="#1a3a0a"/>
+  <text x="28" y="50" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1a3a0a" letter-spacing="1">DRUID HILLS</text>
+  <text x="28" y="68" font-family="Georgia, serif" font-size="10" fill="#555" letter-spacing="2">COUNTRY CLUB</text>
+  <line x1="28" y1="76" x2="270" y2="76" stroke="#2a4a1a" stroke-width="1"/>
+  <text x="28" y="90" font-family="Arial, sans-serif" font-size="8" fill="#999" letter-spacing="2">ATLANTA, GEORGIA</text>
+  <text x="90" y="148" font-family="Arial, sans-serif" font-size="9" fill="#c9a84c" letter-spacing="3">EST. 1912</text>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#0a2240"/>
+  <!-- Diamond badge -->
+  <polygon points="48,30 72,55 48,80 24,55" fill="none" stroke="#c9a84c" stroke-width="2"/>
+  <polygon points="48,38 64,55 48,72 32,55" fill="#c9a84c" opacity="0.2"/>
+  <text x="42" y="60" font-family="Arial Black, sans-serif" font-size="14" font-weight="900" fill="#c9a84c">D</text>
+  <!-- Text -->
+  <text x="90" y="46" font-family="Georgia, serif" font-size="9" fill="#c9a84c" letter-spacing="2">DAVIS H. ELLIOT</text>
+  <line x1="90" y1="52" x2="290" y2="52" stroke="#c9a84c" stroke-width="0.5" opacity="0.5"/>
+  <text x="90" y="68" font-family="Georgia, serif" font-size="16" font-weight="700" fill="#fff" letter-spacing="1">COMPANY</text>
+  <text x="90" y="86" font-family="Arial, sans-serif" font-size="8" fill="#8aa0b8" letter-spacing="2">ELECTRICAL CONSTRUCTION</text>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#fff"/>
+  <!-- Hilton H emblem -->
+  <rect x="28" y="30" width="12" height="80" rx="2" fill="#00306e"/>
+  <rect x="60" y="30" width="12" height="80" rx="2" fill="#00306e"/>
+  <rect x="28" y="64" width="44" height="12" rx="2" fill="#00306e"/>
+  <!-- Text -->
+  <text x="88" y="62" font-family="Arial, sans-serif" font-size="11" fill="#aaa" letter-spacing="3">HILTON</text>
+  <text x="88" y="82" font-family="Arial Black, sans-serif" font-size="18" font-weight="900" fill="#00306e" letter-spacing="1">ATLANTA</text>
+  <line x1="88" y1="90" x2="288" y2="90" stroke="#00306e" stroke-width="1.5"/>
+  <text x="88" y="104" font-family="Arial, sans-serif" font-size="8" fill="#bbb" letter-spacing="2">DOWNTOWN ATLANTA</text>
+</svg>

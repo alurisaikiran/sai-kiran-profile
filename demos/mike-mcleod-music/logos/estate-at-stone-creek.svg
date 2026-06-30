@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#fff"/>
+  <!-- Stone arch / venue entrance -->
+  <path d="M30 110 L30 64 Q30 30 56 30 Q82 30 82 64 L82 110" fill="none" stroke="#6a5a4a" stroke-width="5"/>
+  <path d="M36 110 L36 66 Q36 40 56 40 Q76 40 76 66 L76 110" fill="#f5f0e8"/>
+  <!-- Creek / water underneath -->
+  <path d="M20 116 Q40 110 60 116 Q80 122 100 116" stroke="#4a8aaa" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M20 122 Q40 118 60 122 Q80 126 100 122" stroke="#4a8aaa" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+  <!-- Trees flanking -->
+  <circle cx="18" cy="60" r="14" fill="#3a6a2a"/>
+  <rect x="16" y="72" width="4" height="20" fill="#7a4a1e"/>
+  <circle cx="94" cy="64" r="12" fill="#3a6a2a"/>
+  <rect x="92" y="74" width="4" height="18" fill="#7a4a1e"/>
+  <!-- Text -->
+  <text x="112" y="56" font-family="Georgia, serif" font-size="10" fill="#888" letter-spacing="2">THE ESTATE AT</text>
+  <text x="112" y="72" font-family="Georgia, serif" font-size="14" font-weight="700" fill="#3a2a1a" letter-spacing="1">STONE CREEK</text>
+  <line x1="112" y1="80" x2="295" y2="80" stroke="#6a5a4a" stroke-width="1"/>
+  <text x="112" y="94" font-family="Arial, sans-serif" font-size="8" fill="#aaa" letter-spacing="2">GEORGIA EVENT VENUE</text>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#fff"/>
+  <!-- Horse silhouette -->
+  <path d="M30 96 Q28 80 34 72 Q40 64 50 62 Q56 58 60 50 Q64 44 70 46 Q74 48 72 56 Q80 52 82 58 Q84 66 76 70 Q80 76 78 88 Q76 96 70 98 Q64 100 60 96 Q54 104 46 106 Q36 108 30 96Z" fill="#4a3020"/>
+  <!-- Horse head detail -->
+  <ellipse cx="68" cy="52" rx="8" ry="10" fill="#5a3a28"/>
+  <!-- Eye -->
+  <circle cx="72" cy="50" r="2" fill="#fff"/>
+  <circle cx="72" cy="50" r="1" fill="#111"/>
+  <!-- Mane -->
+  <path d="M62 46 Q58 38 64 34 Q68 32 70 38" stroke="#3a2010" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- Text -->
+  <text x="98" y="58" font-family="Georgia, serif" font-size="12" font-weight="700" fill="#3a2010" letter-spacing="1">CHASTAIN</text>
+  <text x="98" y="76" font-family="Georgia, serif" font-size="12" font-weight="700" fill="#3a2010" letter-spacing="1">HORSE PARK</text>
+  <line x1="98" y1="84" x2="288" y2="84" stroke="#c9a84c" stroke-width="1.5"/>
+  <text x="98" y="98" font-family="Arial, sans-serif" font-size="8" fill="#aaa" letter-spacing="2">ATLANTA, GEORGIA</text>
+</svg>

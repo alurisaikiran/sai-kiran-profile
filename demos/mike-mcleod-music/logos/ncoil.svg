@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#fff"/>
+  <!-- Blue bar top -->
+  <rect x="0" y="0" width="320" height="6" fill="#003087"/>
+  <!-- Shield icon -->
+  <path d="M36 28 L60 28 L60 72 Q60 90 48 98 Q36 90 36 72 Z" fill="#003087"/>
+  <path d="M40 34 L56 34 L56 70 Q56 84 48 91 Q40 84 40 70 Z" fill="#fff" opacity="0.15"/>
+  <!-- Scale of justice inside shield -->
+  <line x1="48" y1="42" x2="48" y2="68" stroke="#fff" stroke-width="1.5"/>
+  <line x1="38" y1="48" x2="58" y2="48" stroke="#fff" stroke-width="1.5"/>
+  <line x1="38" y1="48" x2="34" y2="58" stroke="#fff" stroke-width="1.2"/>
+  <line x1="58" y1="48" x2="62" y2="58" stroke="#fff" stroke-width="1.2"/>
+  <path d="M32 58 Q34 62 36 58" stroke="#fff" stroke-width="1.2" fill="none"/>
+  <path d="M60 58 Q62 62 64 58" stroke="#fff" stroke-width="1.2" fill="none"/>
+  <rect x="44" y="68" width="8" height="2" rx="1" fill="#fff"/>
+  <!-- Text block -->
+  <text x="78" y="50" font-family="Arial Black, sans-serif" font-size="15" font-weight="900" fill="#003087" letter-spacing="1">NCOIL</text>
+  <line x1="78" y1="56" x2="290" y2="56" stroke="#c8102e" stroke-width="2"/>
+  <text x="78" y="70" font-family="Arial, sans-serif" font-size="7.5" fill="#333" letter-spacing=".5">NATIONAL COUNCIL OF</text>
+  <text x="78" y="82" font-family="Arial, sans-serif" font-size="7.5" fill="#333" letter-spacing=".5">INSURANCE LEGISLATORS</text>
+  <!-- Red star accent -->
+  <text x="272" y="52" font-family="Arial" font-size="10" fill="#c8102e">★</text>
+</svg>

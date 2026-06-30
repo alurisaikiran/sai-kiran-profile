@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#fff"/>
+  <!-- Painted tree icon -->
+  <polygon points="52,16 22,64 82,64" fill="#c06090"/>
+  <polygon points="52,36 26,76 78,76" fill="#d07aaa"/>
+  <polygon points="52,52 28,86 76,86" fill="#e090c0"/>
+  <rect x="48" y="84" width="8" height="24" fill="#8b5e3c"/>
+  <!-- Paint brush stroke under -->
+  <path d="M22 98 Q52 88 82 98" stroke="#c06090" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- Text -->
+  <text x="100" y="60" font-family="Georgia, serif" font-size="16" font-weight="700" fill="#8b3070" letter-spacing="1">PAINTED TREE</text>
+  <line x1="100" y1="68" x2="290" y2="68" stroke="#c06090" stroke-width="1.5"/>
+  <text x="100" y="84" font-family="Georgia, serif" font-size="11" fill="#b05090" letter-spacing="2">BOUTIQUES</text>
+  <text x="100" y="100" font-family="Arial, sans-serif" font-size="8" fill="#ccc" letter-spacing="2">MARKETPLACE</text>
+</svg>

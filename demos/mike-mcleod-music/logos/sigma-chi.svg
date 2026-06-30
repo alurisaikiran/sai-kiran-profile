@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#fff"/>
+  <!-- Sigma Chi cross badge -->
+  <rect x="58" y="38" width="16" height="82" rx="3" fill="#003087"/>
+  <rect x="42" y="66" width="48" height="16" rx="3" fill="#003087"/>
+  <!-- White X overlay (sigma chi cross) -->
+  <line x1="48" y1="44" x2="84" y2="112" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.25"/>
+  <line x1="84" y1="44" x2="48" y2="112" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.25"/>
+  <!-- Text -->
+  <text x="106" y="62" font-family="Georgia, serif" font-size="20" font-weight="700" fill="#003087" letter-spacing="2">Sigma Chi</text>
+  <line x1="106" y1="70" x2="295" y2="70" stroke="#003087" stroke-width="1.5"/>
+  <text x="106" y="86" font-family="Arial, sans-serif" font-size="9" fill="#888" letter-spacing="2">FRATERNITY</text>
+  <text x="106" y="102" font-family="Georgia, serif" font-size="10" font-style="italic" fill="#aaa" letter-spacing="1">In Hoc Signo Vinces</text>
+</svg>

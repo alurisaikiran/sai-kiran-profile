@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#fff"/>
+  <!-- Grand hotel crown/top -->
+  <polygon points="52,22 38,38 66,38" fill="#8b6a1a"/>
+  <rect x="34" y="36" width="36" height="6" fill="#c9a84c"/>
+  <!-- Hotel tower -->
+  <rect x="36" y="42" width="32" height="64" fill="#1a2a4a"/>
+  <!-- Windows -->
+  <rect x="42" y="50" width="8" height="7" fill="#c9a84c" opacity="0.7"/>
+  <rect x="56" y="50" width="8" height="7" fill="#c9a84c" opacity="0.7"/>
+  <rect x="42" y="63" width="8" height="7" fill="#c9a84c" opacity="0.7"/>
+  <rect x="56" y="63" width="8" height="7" fill="#c9a84c" opacity="0.7"/>
+  <rect x="42" y="76" width="8" height="7" fill="#c9a84c" opacity="0.5"/>
+  <rect x="56" y="76" width="8" height="7" fill="#c9a84c" opacity="0.5"/>
+  <!-- Door -->
+  <rect x="48" y="90" width="8" height="16" rx="4" fill="#c9a84c"/>
+  <!-- Text -->
+  <text x="84" y="56" font-family="Georgia, serif" font-size="11" fill="#1a2a4a" letter-spacing="2">COURTLAND GRAND</text>
+  <line x1="84" y1="64" x2="295" y2="64" stroke="#c9a84c" stroke-width="1.5"/>
+  <text x="84" y="80" font-family="Georgia, serif" font-size="16" font-weight="700" fill="#1a2a4a" letter-spacing="3">HOTEL</text>
+  <text x="84" y="96" font-family="Arial, sans-serif" font-size="8" fill="#aaa" letter-spacing="2">DOWNTOWN ATLANTA</text>
+</svg>

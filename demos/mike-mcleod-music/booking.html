@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Book Mike McLeod Music for your Atlanta wedding, private party, corporate event, or venue performance. Contact Mike directly to check availability.">
+  <title>Booking | Mike McLeod Music</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="index.html"><span>Mike</span> McLeod</a>
+    <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="credentials.html">Credentials</a>
+      <a href="photos.html">Photos</a>
+      <a href="videos.html">Videos</a>
+      <a href="reviews.html">Reviews</a>
+      <a class="nav-cta" href="booking.html">Booking</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="page-hero" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.75) 100%), url('https://mikemcleodmusic.com/wp-content/uploads/2023/11/main.jpg'); background-size: cover; background-position: center 20%;">
+      <p class="eyebrow">Booking / Contact</p>
+      <h1>Ready to book amazing live music?</h1>
+      <p>Tell Mike about the date, number of hours, location, guest count, genres, and anything else that matters for the event.</p>
+    </div>
+
+    <section class="booking section" id="booking">
+      <div>
+        <p class="eyebrow">Get in touch</p>
+        <h2>Let's make it happen.</h2>
+        <p>Fill out the form and Mike will get back to you about availability, pricing, and what to expect. You can also reach him directly:</p>
+        <p style="margin-top:24px;"><strong>Email:</strong> <a href="mailto:MikeMcLeodMusic@gmail.com">MikeMcLeodMusic@gmail.com</a></p>
+        <p><strong>Phone:</strong> <a href="tel:4046631407">404-663-1407</a></p>
+        <p style="margin-top:32px;color:var(--muted);font-size:.75rem;line-height:1.7;">Typical booking includes a deposit to hold the date, with the balance due the day of the event. Mike brings all equipment, arrives early to set up quietly, and stays through the agreed hours.</p>
+      </div>
+      <form>
+        <label>Name<input required type="text" placeholder="Your name"></label>
+        <label>Email<input required type="email" placeholder="you@example.com"></label>
+        <label>Event type<select><option>Private party</option><option>Wedding</option><option>Corporate event</option><option>Venue performance</option><option>Other</option></select></label>
+        <label>Event date<input type="date"></label>
+        <label>Duration<select><option value="">Select duration</option><option>1 hour</option><option>2 hours</option><option>3 hours</option><option>4 hours</option><option>5 hours</option><option>6+ hours</option></select></label>
+        <label>Location / Venue<input type="text" placeholder="Venue name &amp; address"></label>
+        <label class="full">Anything else Mike should know<textarea rows="4" placeholder="Guest count, genre requests, special songs, indoor/outdoor..."></textarea></label>
+        <button class="button primary full" type="submit">Email Mike</button>
+        <p class="form-message full" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <a class="logo" href="index.html"><span>Mike</span> McLeod</a>
+    <p>Solo performer. Full-band sound. Atlanta, GA. 404-663-1407.</p>
+    <div><a href="http://facebook.com/MikeMcLeodMusic" target="_blank" rel="noreferrer">Facebook</a><a href="http://www.youtube.com/@MikeMcLeodMusic" target="_blank" rel="noreferrer">YouTube</a><a href="mailto:MikeMcLeodMusic@gmail.com">Email</a></div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

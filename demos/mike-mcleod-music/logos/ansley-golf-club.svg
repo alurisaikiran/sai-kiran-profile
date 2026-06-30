@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#fff"/>
+  <!-- Golf flag on green -->
+  <ellipse cx="52" cy="100" rx="30" ry="10" fill="#2a7a2a"/>
+  <rect x="50" y="44" width="3" height="58" fill="#8b6a3a"/>
+  <polygon points="53,44 53,62 72,53" fill="#c8102e"/>
+  <!-- Club head suggestion -->
+  <ellipse cx="42" cy="100" rx="10" ry="4" fill="#1a5a1a"/>
+  <!-- Text -->
+  <text x="90" y="62" font-family="Georgia, serif" font-size="14" font-weight="700" fill="#1a5a1a" letter-spacing="1">ANSLEY</text>
+  <text x="90" y="80" font-family="Georgia, serif" font-size="14" font-weight="700" fill="#1a5a1a" letter-spacing="1">GOLF CLUB</text>
+  <line x1="90" y1="88" x2="288" y2="88" stroke="#c9a84c" stroke-width="1.5"/>
+  <text x="90" y="102" font-family="Arial, sans-serif" font-size="8" fill="#aaa" letter-spacing="2">ATLANTA, GEORGIA · EST. 1945</text>
+</svg>

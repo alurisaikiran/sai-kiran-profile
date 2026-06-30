@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#f9f6f0"/>
+  <!-- Grape bunch icon -->
+  <circle cx="36" cy="50" r="7" fill="#6B2D6B"/>
+  <circle cx="50" cy="50" r="7" fill="#6B2D6B"/>
+  <circle cx="43" cy="40" r="7" fill="#7A3580"/>
+  <circle cx="43" cy="62" r="7" fill="#5A2060"/>
+  <circle cx="30" cy="62" r="6" fill="#6B2D6B"/>
+  <circle cx="56" cy="62" r="6" fill="#6B2D6B"/>
+  <line x1="43" y1="30" x2="43" y2="20" stroke="#5a7a3a" stroke-width="2"/>
+  <path d="M43 22 Q50 14 58 18" stroke="#5a7a3a" stroke-width="1.5" fill="none"/>
+  <!-- Text -->
+  <text x="80" y="44" font-family="Georgia, serif" font-size="15" font-weight="700" fill="#4a1a4a" letter-spacing="1">VALLEY RIVER</text>
+  <text x="80" y="62" font-family="Georgia, serif" font-size="13" fill="#6B2D6B" letter-spacing="2">VINEYARDS</text>
+  <line x1="80" y1="72" x2="290" y2="72" stroke="#6B2D6B" stroke-width="1"/>
+  <text x="80" y="86" font-family="Arial, sans-serif" font-size="8" fill="#999" letter-spacing="2">NORTH CAROLINA</text>
+</svg>

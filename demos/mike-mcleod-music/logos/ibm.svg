@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#fff"/>
+  <!-- IBM blue stripe letterforms -->
+  <g fill="#006699">
+    <!-- I -->
+    <rect x="28" y="48" width="36" height="9"/>
+    <rect x="28" y="75" width="36" height="9"/>
+    <rect x="28" y="103" width="36" height="9"/>
+    <rect x="36" y="57" width="20" height="18"/>
+    <rect x="36" y="84" width="20" height="19"/>
+    <!-- B -->
+    <rect x="78" y="48" width="9" height="64"/>
+    <rect x="87" y="48" width="28" height="9"/>
+    <rect x="87" y="75" width="28" height="9"/>
+    <rect x="87" y="103" width="28" height="9"/>
+    <rect x="115" y="57" width="9" height="18"/>
+    <rect x="115" y="84" width="9" height="19"/>
+    <!-- M -->
+    <rect x="138" y="48" width="9" height="64"/>
+    <rect x="196" y="48" width="9" height="64"/>
+    <polygon points="147,48 172,80 197,48 197,57 172,89 147,57" fill="#006699"/>
+    <!-- Stripes overlay -->
+  </g>
+  <!-- Stripe cutouts for IBM look -->
+  <rect x="0" y="65" width="320" height="10" fill="white" opacity="0.6"/>
+  <rect x="0" y="85" width="320" height="10" fill="white" opacity="0.6"/>
+</svg>

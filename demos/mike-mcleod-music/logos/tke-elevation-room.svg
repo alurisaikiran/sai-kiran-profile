@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <rect width="320" height="160" fill="#fff"/>
+  <!-- Red badge -->
+  <rect x="16" y="28" width="60" height="72" rx="4" fill="#c8102e"/>
+  <text x="23" y="62" font-family="Arial Black, sans-serif" font-size="22" font-weight="900" fill="#fff">TKE</text>
+  <text x="22" y="80" font-family="Arial, sans-serif" font-size="8" fill="rgba(255,255,255,0.8)" letter-spacing="1">TAU KAPPA</text>
+  <text x="24" y="90" font-family="Arial, sans-serif" font-size="8" fill="rgba(255,255,255,0.8)" letter-spacing="1">EPSILON</text>
+  <!-- Text -->
+  <line x1="90" y1="40" x2="90" y2="104" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="102" y="60" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#1a1a1a" letter-spacing="1">ELEVATION</text>
+  <text x="102" y="78" font-family="Arial, sans-serif" font-size="11" fill="#c8102e" letter-spacing="2">ROOM</text>
+  <line x1="102" y1="86" x2="290" y2="86" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="102" y="100" font-family="Arial, sans-serif" font-size="8" fill="#aaa" letter-spacing="1">EVENT VENUE</text>
+</svg>
