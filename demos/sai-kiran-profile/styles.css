@@ -886,9 +886,9 @@ h3 {
 
 .launched-inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.05fr;
   gap: clamp(24px, 5vw, 56px);
-  align-items: center;
+  align-items: start;
 }
 
 .launched-copy {
@@ -997,6 +997,8 @@ h3 {
 }
 
 .launched-preview {
+  position: sticky;
+  top: 96px;
   overflow: hidden;
   background: #0a0f1b;
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -1007,20 +1009,20 @@ h3 {
 .launched-shot {
   display: block;
   overflow: hidden;
-  background: #0a0f1b;
+  background: #000;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .launched-shot img {
+  display: block;
   width: 100%;
   height: auto;
-  max-height: 460px;
-  object-fit: cover;
-  object-position: top center;
+  object-fit: contain;
   transition: transform 480ms ease;
 }
 
 .launched-shot:hover img {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 .launched-meta {
@@ -1203,6 +1205,10 @@ h3 {
 
   .launched-inner {
     grid-template-columns: 1fr;
+  }
+
+  .launched-preview {
+    position: static;
   }
 
   .skill-card.wide,
