@@ -1,0 +1,38 @@
+/* Scroll-reveal, keyframes, and reduced-motion safety. */
+
+/* Applies to any element that should fade+slide in on scroll. */
+.motion-item {
+  opacity: 0.72;
+  transform: translateY(18px);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+.motion-item.is-visible { opacity: 1; transform: translateY(0); }
+.motion-item:nth-child(2n) { transition-delay: 80ms; }
+.motion-item:nth-child(3n) { transition-delay: 140ms; }
+
+/* ── Keyframes ── */
+@keyframes floatPortrait {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes statGlow {
+  0%, 100% { background: rgba(255, 255, 255, 0.04); }
+  50%       { background: rgba(16, 200, 210, 0.08); }
+}
+
+@keyframes livePulse {
+  0%   { box-shadow: 0 0 0 0   rgba(155, 197, 61, 0.55); }
+  70%  { box-shadow: 0 0 0 10px rgba(155, 197, 61, 0); }
+  100% { box-shadow: 0 0 0 0   rgba(155, 197, 61, 0); }
+}
+
+/* Respects the OS-level "reduce motion" preference. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+}

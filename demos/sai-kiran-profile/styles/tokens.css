@@ -1,0 +1,15 @@
+/* Design tokens — single source of truth for every colour, shadow, and spacing value. */
+:root {
+  --ink:       #0d1220;
+  --ink-2:     #151a2d;
+  --paper:     #f4f0e8;
+  --paper-2:   #fffaf0;
+  --muted:     #647084;
+  --line:      rgba(255, 255, 255, 0.12);
+  --line-dark: rgba(13, 18, 32, 0.14);
+  --cyan:      #10c8d2;
+  --violet:    #7c4dff;
+  --coral:     #f05d52;
+  --green:     #9bc53d;
+  --shadow:    0 24px 70px rgba(13, 18, 32, 0.22);
+}
