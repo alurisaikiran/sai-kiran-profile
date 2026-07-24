@@ -5,7 +5,37 @@ import type { ContactContent } from "@/lib/content-types";
 
 export default function Contact({ data }: { data: ContactContent }) {
   const [note, setNote] = useState("");
+  const [sending, setSending] = useState(false);
   const [copyLabel, setCopyLabel] = useState("Copy Email");
+
+  async function submit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const values = new FormData(form);
+
+    setSending(true);
+    setNote("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: values.get("name"),
+          email: values.get("email"),
+          message: values.get("message"),
+          website: values.get("website"), // honeypot
+        }),
+      });
+      const body = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(body.error || "Could not send your message");
+      form.reset();
+      setNote("Thanks — your message came through. I'll get back to you shortly.");
+    } catch (err) {
+      setNote(err instanceof Error ? err.message : "Could not send your message");
+    }
+    setSending(false);
+  }
 
   async function copyEmail() {
     try {
@@ -43,15 +73,7 @@ export default function Contact({ data }: { data: ContactContent }) {
           </a>
         </div>
       </div>
-      <form
-        className="contact-form"
-        noValidate
-        onSubmit={(e) => {
-          e.preventDefault();
-          e.currentTarget.reset();
-          setNote("Message drafted. Connect a backend or mailto: before going live.");
-        }}
-      >
+      <form className="contact-form" noValidate onSubmit={submit}>
         <label>
           Full Name
           <input type="text" name="name" placeholder="Your name" required />
@@ -64,8 +86,17 @@ export default function Contact({ data }: { data: ContactContent }) {
           Message
           <textarea name="message" rows={5} placeholder="Tell me what you want to build" />
         </label>
-        <button className="button primary" type="submit">
-          Draft Message Locally
+        {/* Honeypot — hidden from people, irresistible to bots. */}
+        <input
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          style={{ position: "absolute", left: "-9999px", width: 1, height: 1 }}
+        />
+        <button className="button primary" type="submit" disabled={sending}>
+          {sending ? "Sending…" : "Send Message"}
         </button>
         <p className="form-note" role="status">
           {note}

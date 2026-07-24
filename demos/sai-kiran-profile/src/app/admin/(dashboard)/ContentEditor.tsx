@@ -20,13 +20,7 @@ const SECTIONS = [
 
 type EditableSection = (typeof SECTIONS)[number]["key"];
 
-export default function AdminDashboard({
-  session,
-  initialContent,
-}: {
-  session: { email: string };
-  initialContent: SiteContent;
-}) {
+export default function ContentEditor({ initialContent }: { initialContent: SiteContent }) {
   const router = useRouter();
   const [content, setContent] = useState<SiteContent>(initialContent);
   const [active, setActive] = useState<EditableSection>("hero");
@@ -63,70 +57,42 @@ export default function AdminDashboard({
     setSaving(false);
   }
 
-  async function signOut() {
-    await fetch("/api/auth/logout", { method: "POST" });
-    router.push("/admin/login");
-    router.refresh();
-  }
-
   return (
-    <div className="admin-shell">
-      <aside className="admin-sidebar">
-        <div className="admin-brand">
-          <span className="admin-brand-mark">SK</span>
-          <span>CMS</span>
-        </div>
-        {SECTIONS.map(({ key, label }) => (
-          <button
-            key={key}
-            className={`admin-nav-item${key === active ? " active" : ""}`}
-            onClick={() => setActive(key)}
-          >
-            {label}
-          </button>
-        ))}
-        <div className="admin-nav-footer">
-          <a
-            href="/"
-            target="_blank"
-            className="admin-btn ghost"
-            style={{ display: "block", textAlign: "center", marginBottom: 8 }}
-          >
-            View Site
-          </a>
-          <button className="admin-btn ghost" style={{ width: "100%" }} onClick={signOut}>
-            Sign out
-          </button>
-        </div>
-      </aside>
-
-      <div className="admin-main">
-        <div className="admin-topbar">
-          <h1>{SECTIONS.find((s) => s.key === active)?.label}</h1>
-          <div className="admin-row" style={{ margin: 0, alignItems: "center" }}>
-            <span style={{ color: "var(--admin-muted)", fontSize: 12 }}>{session.email}</span>
-            <button className="admin-btn primary" onClick={save} disabled={saving}>
-              {saving ? "Saving…" : "Save changes"}
-            </button>
-          </div>
-        </div>
-
-        <div className="admin-content">
-          {notice && <div className={`admin-notice ${notice.kind}`}>{notice.msg}</div>}
-
-          {active === "hero" && <HeroEditor data={content.hero} onChange={(v) => patch("hero", v)} />}
-          {active === "about" && <AboutEditor data={content.about} onChange={(v) => patch("about", v)} />}
-          {active === "skills" && <SkillsEditor data={content.skills} onChange={(v) => patch("skills", v)} />}
-          {active === "experience" && (
-            <ExperienceEditor data={content.experience} onChange={(v) => patch("experience", v)} />
-          )}
-          {active === "credentials" && (
-            <CredentialsEditor data={content.credentials} onChange={(v) => patch("credentials", v)} />
-          )}
-          {active === "contact" && <ContactEditor data={content.contact} onChange={(v) => patch("contact", v)} />}
-        </div>
+    <>
+      <div className="admin-topbar">
+        <h1>Site Content</h1>
+        <button className="admin-btn primary" onClick={save} disabled={saving}>
+          {saving ? "Saving…" : "Save changes"}
+        </button>
       </div>
-    </div>
+
+      <div className="admin-content">
+        {notice && <div className={`admin-notice ${notice.kind}`}>{notice.msg}</div>}
+
+        <div className="admin-subnav">
+          {SECTIONS.map(({ key, label }) => (
+            <button
+              key={key}
+              className={`admin-chip${key === active ? " active" : ""}`}
+              onClick={() => setActive(key)}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+
+        {active === "hero" && <HeroEditor data={content.hero} onChange={(v) => patch("hero", v)} />}
+        {active === "about" && <AboutEditor data={content.about} onChange={(v) => patch("about", v)} />}
+        {active === "skills" && <SkillsEditor data={content.skills} onChange={(v) => patch("skills", v)} />}
+        {active === "experience" && (
+          <ExperienceEditor data={content.experience} onChange={(v) => patch("experience", v)} />
+        )}
+        {active === "credentials" && (
+          <CredentialsEditor data={content.credentials} onChange={(v) => patch("credentials", v)} />
+        )}
+        {active === "contact" && <ContactEditor data={content.contact} onChange={(v) => patch("contact", v)} />}
+      </div>
+    </>
   );
 }
 
