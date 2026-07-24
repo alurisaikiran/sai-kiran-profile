@@ -124,6 +124,21 @@ a { color: var(--admin-cyan); text-decoration: none; }
 .admin-field { display: grid; gap: 6px; margin-bottom: 16px; }
 .admin-field label { color: var(--admin-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
 
+.admin-field-head { display: flex; align-items: center; justify-content: space-between; }
+.admin-field-head label { margin: 0; }
+
+.admin-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--admin-cyan);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.admin-link:hover { opacity: 0.8; }
+
 .admin-input,
 .admin-textarea {
   width: 100%;

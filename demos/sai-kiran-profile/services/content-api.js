@@ -75,6 +75,32 @@ export async function logout() {
   await fetch(`${API_BASE}/auth/logout`, { method: "POST", credentials: "same-origin" });
 }
 
+/** Admin: request a password-reset email. Always resolves — never reveals whether the email exists. */
+export async function requestPasswordReset(email) {
+  await fetch(`${API_BASE}/auth/forgot-password`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email }),
+  });
+}
+
+/** Admin: complete a password reset using the tokens from the emailed recovery link. */
+export async function confirmPasswordReset({ accessToken, refreshToken, newPassword }) {
+  const res = await fetch(`${API_BASE}/auth/reset-password`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      access_token: accessToken,
+      refresh_token: refreshToken,
+      new_password: newPassword,
+    }),
+  });
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}));
+    throw new Error(body.error || "Reset failed");
+  }
+}
+
 /** Admin: true if the session cookie is present and still valid. */
 export async function checkSession() {
   const res = await fetch(`${API_BASE}/admin/content`, { credentials: "same-origin" });

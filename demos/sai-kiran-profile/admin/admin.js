@@ -5,12 +5,21 @@
  * All API calls go through /api/admin/* (Supabase session cookie).
  */
 
-import { login, logout, checkSession, saveSection, uploadImage } from "../services/content-api.js";
+import {
+  login, logout, checkSession, saveSection, uploadImage,
+  requestPasswordReset, confirmPasswordReset,
+} from "../services/content-api.js";
 
 const root = document.getElementById("admin-root");
 
 // ── Router ───────────────────────────────────────────────────────────────────
 async function init() {
+  const hashParams = new URLSearchParams(window.location.hash.slice(1));
+  if (hashParams.get("type") === "recovery" && hashParams.get("access_token")) {
+    renderResetPassword(hashParams.get("access_token"), hashParams.get("refresh_token"));
+    return;
+  }
+
   if (await checkSession()) {
     renderDashboard();
   } else {
@@ -32,7 +41,10 @@ function renderLogin() {
             <input class="admin-input" id="email" type="email" autocomplete="username" required>
           </div>
           <div class="admin-field">
-            <label for="password">Password</label>
+            <div class="admin-field-head">
+              <label for="password">Password</label>
+              <button type="button" class="admin-link" id="forgot-link">Forgot password?</button>
+            </div>
             <input class="admin-input" id="password" type="password" autocomplete="current-password" required>
           </div>
           <button class="admin-btn primary" type="submit" style="width:100%">Sign in</button>
@@ -40,6 +52,8 @@ function renderLogin() {
       </div>
     </div>
   `;
+
+  document.getElementById("forgot-link").addEventListener("click", renderForgotPassword);
 
   document.getElementById("login-form").addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -59,6 +73,98 @@ function renderLogin() {
       notice.innerHTML = `<div class="admin-notice error">${err.message}</div>`;
       btn.disabled = false;
       btn.textContent = "Sign in";
+    }
+  });
+}
+
+// ── Forgot password ──────────────────────────────────────────────────────────
+function renderForgotPassword() {
+  root.innerHTML = `
+    <div class="admin-login-wrap">
+      <div class="admin-login-card">
+        <h1>Reset Password</h1>
+        <p>Enter your admin email and we'll send a reset link.</p>
+        <div id="forgot-notice"></div>
+        <form id="forgot-form">
+          <div class="admin-field">
+            <label for="forgot-email">Email</label>
+            <input class="admin-input" id="forgot-email" type="email" autocomplete="username" required>
+          </div>
+          <button class="admin-btn primary" type="submit" style="width:100%">Send Reset Link</button>
+        </form>
+        <button type="button" class="admin-link" id="back-to-login" style="margin-top:16px">Back to sign in</button>
+      </div>
+    </div>
+  `;
+
+  document.getElementById("back-to-login").addEventListener("click", renderLogin);
+
+  document.getElementById("forgot-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const notice = document.getElementById("forgot-notice");
+    const btn    = e.target.querySelector("button");
+    const email  = document.getElementById("forgot-email").value;
+
+    btn.disabled = true;
+    btn.textContent = "Sending…";
+
+    await requestPasswordReset(email);
+
+    notice.innerHTML = `<div class="admin-notice success">If ${escapeHtml(email)} is registered, a reset link is on its way. Check your inbox.</div>`;
+    btn.disabled = false;
+    btn.textContent = "Send Reset Link";
+  });
+}
+
+// ── Set new password (from emailed recovery link) ───────────────────────────
+function renderResetPassword(accessToken, refreshToken) {
+  root.innerHTML = `
+    <div class="admin-login-wrap">
+      <div class="admin-login-card">
+        <h1>Set New Password</h1>
+        <p>Choose a new password for your admin account.</p>
+        <div id="reset-notice"></div>
+        <form id="reset-form">
+          <div class="admin-field">
+            <label for="new-password">New Password</label>
+            <input class="admin-input" id="new-password" type="password" autocomplete="new-password" required minlength="6">
+          </div>
+          <div class="admin-field">
+            <label for="confirm-password">Confirm Password</label>
+            <input class="admin-input" id="confirm-password" type="password" autocomplete="new-password" required minlength="6">
+          </div>
+          <button class="admin-btn primary" type="submit" style="width:100%">Update Password</button>
+        </form>
+      </div>
+    </div>
+  `;
+
+  document.getElementById("reset-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const notice          = document.getElementById("reset-notice");
+    const btn             = e.target.querySelector("button");
+    const newPassword     = document.getElementById("new-password").value;
+    const confirmPassword = document.getElementById("confirm-password").value;
+
+    if (newPassword !== confirmPassword) {
+      notice.innerHTML = `<div class="admin-notice error">Passwords don't match.</div>`;
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = "Updating…";
+    notice.innerHTML = "";
+
+    try {
+      await confirmPasswordReset({ accessToken, refreshToken, newPassword });
+      history.replaceState(null, "", window.location.pathname);
+      renderLogin();
+      document.getElementById("login-notice").innerHTML =
+        `<div class="admin-notice success">Password updated. Sign in with your new password.</div>`;
+    } catch (err) {
+      notice.innerHTML = `<div class="admin-notice error">${err.message}</div>`;
+      btn.disabled = false;
+      btn.textContent = "Update Password";
     }
   });
 }
