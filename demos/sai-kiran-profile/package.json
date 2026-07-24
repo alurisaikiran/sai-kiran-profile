@@ -1,17 +1,32 @@
 {
   "name": "sai-kiran-portfolio",
   "version": "1.0.0",
-  "type": "module",
+  "private": true,
   "scripts": {
-    "start": "node server/index.js",
-    "dev":   "node --watch server/index.js",
-    "seed":  "node scripts/seed-content.mjs"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "seed": "node scripts/seed-content.mjs"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.45.4",
-    "cookie-parser":         "^1.4.6",
-    "dotenv":                "^16.4.5",
-    "express":               "^4.19.2",
-    "multer":                "^2.2.0"
+    "@supabase/ssr": "^0.12.3",
+    "@supabase/supabase-js": "^2.110.8",
+    "@types/three": "^0.185.1",
+    "next": "^16.2.11",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "three": "^0.185.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "dotenv": "^16.4.5",
+    "typescript": "^5"
+  },
+  "overrides": {
+    "postcss": "^8.5.23",
+    "sharp": "^0.35.3"
   }
 }
