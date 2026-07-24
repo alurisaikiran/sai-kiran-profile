@@ -1,20 +1,22 @@
 /**
- * Express server.
+ * Local dev / self-hosted server.
  * - Serves the static public site from the project root.
- * - Exposes /api/auth and /api/* content routes.
+ * - Mounts the /api/* app from server/app.js.
+ *
+ * On Vercel, this file isn't used at all — api/index.js exposes the same
+ * /api/* app as a serverless function, and Vercel serves the static files
+ * (index.html, admin/, main.js, styles/, etc.) natively. See vercel.json.
  *
  * Start: npm start
  * Dev:   npm run dev   (auto-restarts on file change)
  */
 
-import express      from "express";
-import path         from "path";
-import cookieParser from "cookie-parser";
+import express from "express";
+import path    from "path";
 import { fileURLToPath } from "url";
 import "dotenv/config";
 
-import authRoutes    from "./routes/auth.js";
-import contentRoutes from "./routes/content.js";
+import app from "./app.js";
 
 const __dir       = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dir, "..");
@@ -26,22 +28,9 @@ if (!process.env.SUPABASE_URL || !process.env.SUPABASE_ANON_KEY) {
   process.exit(1);
 }
 
-// ── App ─────────────────────────────────────────────────────────────────────
-const app = express();
-
-app.use(express.json());
-app.use(cookieParser());
-
 // Serve the frontend from the project root.
 // /admin/ resolves to admin/index.html automatically.
 app.use(express.static(projectRoot));
-
-// /api/auth/*                 → login
-// /api/content                → public content GET
-// /api/admin/content          → admin content GET (auth)
-// /api/admin/content/:section → admin content PUT (auth)
-app.use("/api/auth", authRoutes);
-app.use("/api",      contentRoutes);
 
 // Fallback: serve index.html for any unmatched path (SPA behaviour).
 app.get("*", (_req, res) => {
