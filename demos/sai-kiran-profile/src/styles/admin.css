@@ -304,6 +304,31 @@ a { color: var(--admin-cyan); text-decoration: none; }
 
 .admin-empty { padding: 48px 24px; text-align: center; color: var(--admin-muted); }
 
+/* ── Date range control ── */
+.admin-range {
+  padding: 16px;
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius);
+  background: rgba(255,255,255,0.02);
+}
+.admin-range .admin-subnav { margin-bottom: 12px; }
+
+/* Row summarising what was fetched and when. */
+.admin-fetch-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  justify-content: space-between;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  border-radius: var(--admin-radius);
+  background: rgba(16,200,210,0.06);
+  border: 1px solid rgba(16,200,210,0.2);
+  font-size: 12px;
+  color: var(--admin-muted);
+}
+.admin-fetch-meta strong { color: var(--admin-ink); }
+
 .admin-muted-text { color: var(--admin-muted); font-size: 12px; }
 
 /* ── Confirmation / warning panel (bulk send) ── */

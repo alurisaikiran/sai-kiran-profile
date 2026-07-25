@@ -4,15 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { isExcluded, type Contact, type ContactExclusion } from "@/lib/crm-types";
-
-interface GmailMessage {
-  id: string;
-  fromName: string;
-  fromEmail: string;
-  subject: string;
-  snippet: string;
-  date: string;
-}
+import MessageList from "./MessageList";
 
 const MAX_RECIPIENTS = 50;
 
@@ -104,118 +96,6 @@ export default function InboxClient({
         )}
       </div>
     </>
-  );
-}
-
-/* ── Messages ── */
-
-function MessageList({
-  onFlash,
-  onExtracted,
-}: {
-  onFlash: (kind: "success" | "error", msg: string) => void;
-  onExtracted: () => void;
-}) {
-  const [messages, setMessages] = useState<GmailMessage[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [extracting, setExtracting] = useState(false);
-  const [loaded, setLoaded] = useState(false);
-
-  async function load() {
-    setLoading(true);
-    try {
-      const res = await fetch("/api/admin/gmail/messages?limit=25");
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Could not load messages");
-      setMessages(data.messages);
-      setLoaded(true);
-    } catch (err) {
-      onFlash("error", err instanceof Error ? err.message : "Could not load messages");
-    }
-    setLoading(false);
-  }
-
-  async function extract() {
-    setExtracting(true);
-    try {
-      const res = await fetch("/api/admin/gmail/extract-contacts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ limit: 100 }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Extraction failed");
-      onFlash(
-        "success",
-        `Scanned ${data.scanned} messages — added ${data.added} new contact${data.added === 1 ? "" : "s"}, skipped ${data.skipped} already known.`
-      );
-      onExtracted();
-    } catch (err) {
-      onFlash("error", err instanceof Error ? err.message : "Extraction failed");
-    }
-    setExtracting(false);
-  }
-
-  return (
-    <div className="admin-section-card">
-      <div className="admin-section-card-head">
-        <h2>Recent messages</h2>
-        <div className="admin-row" style={{ margin: 0 }}>
-          <button className="admin-btn ghost" onClick={load} disabled={loading}>
-            {loading ? "Loading…" : loaded ? "Refresh" : "Load inbox"}
-          </button>
-          <button className="admin-btn primary" onClick={extract} disabled={extracting}>
-            {extracting ? "Scanning…" : "Extract contacts"}
-          </button>
-        </div>
-      </div>
-
-      <p className="admin-muted-text" style={{ lineHeight: 1.7, marginBottom: 16 }}>
-        Messages are read live from Gmail and never stored. &ldquo;Extract contacts&rdquo; scans your
-        100 most recent messages and saves any sender not already in your CRM.
-      </p>
-
-      {!loaded ? (
-        <div className="admin-empty">Hit &ldquo;Load inbox&rdquo; to fetch your recent messages.</div>
-      ) : messages.length === 0 ? (
-        <div className="admin-empty">No messages found.</div>
-      ) : (
-        <div className="admin-table-wrap">
-          <table className="admin-table">
-            <thead>
-              <tr>
-                <th>From</th>
-                <th>Subject</th>
-                <th>Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              {messages.map((m) => (
-                <tr key={m.id}>
-                  <td>
-                    <strong>{m.fromName || m.fromEmail}</strong>
-                    {m.fromName && (
-                      <>
-                        <br />
-                        <span className="admin-muted-text">{m.fromEmail}</span>
-                      </>
-                    )}
-                  </td>
-                  <td>
-                    {m.subject || "(no subject)"}
-                    <br />
-                    <span className="admin-muted-text">{m.snippet}</span>
-                  </td>
-                  <td className="admin-muted-text">
-                    {m.date ? new Date(m.date).toLocaleDateString() : "—"}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
-    </div>
   );
 }
 
