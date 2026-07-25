@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import type { Contact, ContactExclusion } from "@/lib/crm-types";
 import PeoplePanel from "./PeoplePanel";
 import CompaniesPanel from "./CompaniesPanel";
@@ -30,23 +31,69 @@ export default function CrmWorkspace({
   initialExclusions: ContactExclusion[];
   gmailConnected: boolean;
 }) {
+  const router = useRouter();
   const [tab, setTab] = useState<Tab>("people");
   const [contacts, setContacts] = useState(initialContacts);
   const [exclusions, setExclusions] = useState(initialExclusions);
   const [notice, setNotice] = useState<CrmNotice | null>(null);
+  const [busy, setBusy] = useState<"refresh" | "import" | null>(null);
+
+  // Pick up rows fetched by the server after a refresh or import.
+  useEffect(() => setContacts(initialContacts), [initialContacts]);
+  useEffect(() => setExclusions(initialExclusions), [initialExclusions]);
 
   function flash(kind: "success" | "error", msg: string) {
     setNotice({ kind, msg });
-    setTimeout(() => setNotice(null), 4000);
+    setTimeout(() => setNotice(null), 6000);
+  }
+
+  function refresh() {
+    setBusy("refresh");
+    router.refresh();
+    // router.refresh() has no completion signal; this just re-enables the button.
+    setTimeout(() => setBusy(null), 1200);
+  }
+
+  async function importFromGmail() {
+    setBusy("import");
+    try {
+      const res = await fetch("/api/admin/gmail/extract-contacts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ limit: 100 }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Import failed");
+      flash(
+        "success",
+        `Scanned ${data.scanned} messages — added ${data.added} new contact${
+          data.added === 1 ? "" : "s"
+        }, skipped ${data.skipped} already known.`
+      );
+      router.refresh();
+    } catch (err) {
+      flash("error", err instanceof Error ? err.message : "Import failed");
+    }
+    setBusy(null);
   }
 
   return (
     <>
       <div className="admin-topbar">
         <h1>CRM</h1>
-        <span className="admin-muted-text">
-          {contacts.length} contact{contacts.length === 1 ? "" : "s"}
-        </span>
+        <div className="admin-row" style={{ margin: 0, alignItems: "center" }}>
+          <span className="admin-muted-text">
+            {contacts.length} contact{contacts.length === 1 ? "" : "s"}
+          </span>
+          <button className="admin-btn ghost" onClick={refresh} disabled={busy !== null}>
+            {busy === "refresh" ? "Refreshing…" : "Refresh"}
+          </button>
+          {gmailConnected && (
+            <button className="admin-btn primary" onClick={importFromGmail} disabled={busy !== null}>
+              {busy === "import" ? "Importing…" : "Import from Gmail"}
+            </button>
+          )}
+        </div>
       </div>
 
       <div className="admin-content">

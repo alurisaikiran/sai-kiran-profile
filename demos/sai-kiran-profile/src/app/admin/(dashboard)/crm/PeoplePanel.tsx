@@ -78,8 +78,11 @@ export default function PeoplePanel({
   if (contacts.length === 0) {
     return (
       <div className="admin-empty">
-        No contacts yet. Contact-form submissions land here, and you can pull more in from
-        Inbox → Extract contacts.
+        <p>No contacts yet. They arrive two ways:</p>
+        <p style={{ marginTop: 12 }}>
+          Someone submits the contact form on your site, or you use{" "}
+          <strong>Import from Gmail</strong> above to pull senders out of your recent mail.
+        </p>
       </div>
     );
   }
