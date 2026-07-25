@@ -342,19 +342,60 @@ function toBase64Url(value: string): string {
     .replace(/=+$/g, "");
 }
 
+export interface EmailAttachment {
+  filename: string;
+  mimeType: string;
+  content: ArrayBuffer;
+}
+
+/** RFC 2045 caps encoded lines at 76 characters. */
+function wrapBase64(value: string): string {
+  return value.replace(/(.{76})/g, "$1\r\n");
+}
+
 export async function sendEmail(
   accessToken: string,
-  opts: { from: string; to: string; subject: string; body: string }
+  opts: {
+    from: string;
+    to: string;
+    subject: string;
+    body: string;
+    attachment?: EmailAttachment;
+  }
 ): Promise<{ ok: boolean; id?: string; error?: string }> {
-  const mime = [
+  const headers = [
     `From: ${opts.from}`,
     `To: ${opts.to}`,
     `Subject: ${opts.subject}`,
     "MIME-Version: 1.0",
-    'Content-Type: text/plain; charset="UTF-8"',
-    "",
-    opts.body,
-  ].join("\r\n");
+  ];
+
+  let mime: string;
+  if (opts.attachment) {
+    const boundary = `b_${Date.now().toString(36)}_${Math.random().toString(36).slice(2)}`;
+    const encoded = wrapBase64(Buffer.from(opts.attachment.content).toString("base64"));
+
+    mime = [
+      ...headers,
+      `Content-Type: multipart/mixed; boundary="${boundary}"`,
+      "",
+      `--${boundary}`,
+      'Content-Type: text/plain; charset="UTF-8"',
+      "",
+      opts.body,
+      "",
+      `--${boundary}`,
+      `Content-Type: ${opts.attachment.mimeType}; name="${opts.attachment.filename}"`,
+      `Content-Disposition: attachment; filename="${opts.attachment.filename}"`,
+      "Content-Transfer-Encoding: base64",
+      "",
+      encoded,
+      "",
+      `--${boundary}--`,
+    ].join("\r\n");
+  } else {
+    mime = [...headers, 'Content-Type: text/plain; charset="UTF-8"', "", opts.body].join("\r\n");
+  }
 
   const res = await fetch("https://gmail.googleapis.com/gmail/v1/users/me/messages/send", {
     method: "POST",

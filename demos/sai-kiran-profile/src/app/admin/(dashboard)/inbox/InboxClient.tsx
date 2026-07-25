@@ -23,11 +23,15 @@ export default function InboxClient({
   connectedEmail,
   contacts,
   exclusions,
+  resumeFilename,
+  aiEnabled,
 }: {
   connected: boolean;
   connectedEmail: string | null;
   contacts: Contact[];
   exclusions: ContactExclusion[];
+  resumeFilename: string | null;
+  aiEnabled: boolean;
 }) {
   const router = useRouter();
   const [tab, setTab] = useState<Tab>("inbox");
@@ -91,6 +95,9 @@ export default function InboxClient({
           <Compose
             contacts={contacts}
             exclusions={exclusions}
+            resumeFilename={resumeFilename}
+            aiEnabled={aiEnabled}
+            senderEmail={connectedEmail}
             onFlash={flash}
             onSent={() => router.refresh()}
           />
@@ -217,11 +224,17 @@ function MessageList({
 function Compose({
   contacts,
   exclusions,
+  resumeFilename,
+  aiEnabled,
+  senderEmail,
   onFlash,
   onSent,
 }: {
   contacts: Contact[];
   exclusions: ContactExclusion[];
+  resumeFilename: string | null;
+  aiEnabled: boolean;
+  senderEmail: string | null;
   onFlash: (kind: "success" | "error", msg: string) => void;
   onSent: () => void;
 }) {
@@ -230,6 +243,32 @@ function Compose({
   const [body, setBody] = useState("");
   const [confirming, setConfirming] = useState(false);
   const [sending, setSending] = useState(false);
+  const [attachResume, setAttachResume] = useState(false);
+  const [prompt, setPrompt] = useState("");
+  const [drafting, setDrafting] = useState(false);
+
+  async function draftWithAi() {
+    setDrafting(true);
+    try {
+      const res = await fetch("/api/admin/ai/draft-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          prompt,
+          hasResume: attachResume && Boolean(resumeFilename),
+          senderName: senderEmail,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Could not draft the email");
+      setSubject(data.draft.subject);
+      setBody(data.draft.body);
+      onFlash("success", "Draft ready — review and edit it before sending.");
+    } catch (err) {
+      onFlash("error", err instanceof Error ? err.message : "Could not draft the email");
+    }
+    setDrafting(false);
+  }
 
   // One entry per address (a repeat sender shouldn't get two copies), and
   // never offer an excluded address — the server rejects them anyway.
@@ -258,7 +297,7 @@ function Compose({
       const res = await fetch("/api/admin/gmail/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ recipients, subject, body, confirm: true }),
+        body: JSON.stringify({ recipients, subject, body, confirm: true, attachResume }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Send failed");
@@ -294,6 +333,11 @@ function Compose({
             {recipients.length === 1 ? "" : "es"} below, from your connected Gmail account.
             Recipients can&apos;t see each other. This can&apos;t be undone.
           </p>
+          {attachResume && resumeFilename && (
+            <p style={{ lineHeight: 1.7 }}>
+              Attaching <strong>{resumeFilename}</strong> to every message.
+            </p>
+          )}
           <div className="admin-recipient-list">
             {recipients.map((r) => (
               <div key={r}>{r}</div>
@@ -373,6 +417,33 @@ function Compose({
         )}
       </div>
 
+      {aiEnabled && (
+        <div className="admin-section-card">
+          <h2>Draft with AI</h2>
+          <p className="admin-muted-text" style={{ lineHeight: 1.7, marginBottom: 16 }}>
+            Describe what you want to say and Groq will draft it. The result drops into the
+            fields below for you to edit — nothing is sent until you review and confirm.
+          </p>
+          <div className="admin-field">
+            <label>Brief</label>
+            <textarea
+              className="admin-textarea"
+              placeholder="e.g. introduce myself as a full-stack developer open to frontend roles, mention AWS certification and my portfolio site"
+              value={prompt}
+              onChange={(e) => setPrompt(e.target.value)}
+              style={{ minHeight: 100 }}
+            />
+          </div>
+          <button
+            className="admin-btn ghost"
+            onClick={draftWithAi}
+            disabled={drafting || !prompt.trim()}
+          >
+            {drafting ? "Drafting…" : "Draft with AI"}
+          </button>
+        </div>
+      )}
+
       <div className="admin-section-card">
         <h2>Message</h2>
         <div className="admin-field">
@@ -392,6 +463,24 @@ function Compose({
             onChange={(e) => setBody(e.target.value)}
             style={{ minHeight: 200 }}
           />
+        </div>
+
+        <div className="admin-field">
+          {resumeFilename ? (
+            <label className="admin-checkbox">
+              <input
+                type="checkbox"
+                checked={attachResume}
+                onChange={(e) => setAttachResume(e.target.checked)}
+              />
+              Attach resume ({resumeFilename})
+            </label>
+          ) : (
+            <p className="admin-muted-text">
+              No resume uploaded. Add one in <Link href="/admin/settings">Settings</Link> to attach
+              it here.
+            </p>
+          )}
         </div>
 
         {overLimit && (

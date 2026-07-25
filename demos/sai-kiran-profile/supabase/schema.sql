@@ -113,6 +113,39 @@ create policy "contact_exclusions_auth_all"
   using (true)
   with check (true);
 
+-- ── Resumes ─────────────────────────────────────────────────────────────────
+-- A resume holds personal details, so unlike portfolio-assets its bucket is
+-- private: the file is only ever read server-side when attaching to an email.
+create table if not exists resumes (
+  id          uuid primary key default gen_random_uuid(),
+  filename    text not null,
+  storage_path text not null,
+  mime_type   text not null,
+  size_bytes  integer not null,
+  is_current  boolean not null default true,
+  created_at  timestamptz not null default now()
+);
+
+alter table resumes enable row level security;
+
+drop policy if exists "resumes_auth_all" on resumes;
+create policy "resumes_auth_all"
+  on resumes for all
+  to authenticated
+  using (true)
+  with check (true);
+
+insert into storage.buckets (id, name, public)
+values ('resumes', 'resumes', false)
+on conflict (id) do nothing;
+
+drop policy if exists "resumes_bucket_auth_all" on storage.objects;
+create policy "resumes_bucket_auth_all"
+  on storage.objects for all
+  to authenticated
+  using (bucket_id = 'resumes')
+  with check (bucket_id = 'resumes');
+
 -- ── Third-party integrations (OAuth tokens) ─────────────────────────────────
 -- These rows are credentials, so they get a tighter policy than the tables
 -- above: no anon access at all, and each row is readable only by its owner.

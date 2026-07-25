@@ -1,7 +1,9 @@
 import { headers } from "next/headers";
 import { requireAuth } from "@/lib/auth";
 import { getOAuthEnv, getTokens } from "@/lib/gmail";
+import { isGroqConfigured } from "@/lib/groq";
 import GmailConnection from "./GmailConnection";
+import ResumeUpload, { type StoredResume } from "./ResumeUpload";
 
 export const dynamic = "force-dynamic";
 
@@ -13,6 +15,14 @@ export default async function SettingsPage({
   const params = await searchParams;
   const auth = await requireAuth();
   const tokens = auth ? await getTokens(auth.supabase, auth.user.id) : null;
+
+  const { data: resume } = auth
+    ? await auth.supabase
+        .from("resumes")
+        .select("id, filename, size_bytes, created_at")
+        .eq("is_current", true)
+        .maybeSingle()
+    : { data: null };
 
   // Resolve the same origin the OAuth routes will use, so the page can show
   // the exact redirect URI that must be registered in Google Cloud.
@@ -36,6 +46,17 @@ export default async function SettingsPage({
           error={params.gmail_error ?? null}
           redirectUri={redirectUri}
         />
+
+        <ResumeUpload resume={(resume as StoredResume | null) ?? null} />
+
+        <div className="admin-section-card">
+          <h2>AI drafting</h2>
+          <p className="admin-muted-text" style={{ lineHeight: 1.7 }}>
+            {isGroqConfigured()
+              ? "Groq is configured. You can draft email copy from a short brief on the Inbox → Compose tab. Every draft is editable and still goes through the review step before sending."
+              : "Groq is not configured. Set GROQ_API_KEY in your environment to draft email copy with AI."}
+          </p>
+        </div>
       </div>
     </>
   );

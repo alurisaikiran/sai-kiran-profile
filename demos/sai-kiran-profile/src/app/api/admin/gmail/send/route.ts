@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { requireAuth } from "@/lib/auth";
-import { getAccessToken, sendEmail } from "@/lib/gmail";
+import { getAccessToken, sendEmail, type EmailAttachment } from "@/lib/gmail";
 import { isExcluded, isValidEmail, type ContactExclusion } from "@/lib/crm-types";
 
 export const dynamic = "force-dynamic";
@@ -81,6 +81,37 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: error ?? "Gmail is not connected" }, { status: 400 });
   }
 
+  // Resolve the resume once, not per recipient.
+  let attachment: EmailAttachment | undefined;
+  if (body.attachResume === true) {
+    const { data: resume } = await auth.supabase
+      .from("resumes")
+      .select("*")
+      .eq("is_current", true)
+      .maybeSingle();
+
+    if (!resume) {
+      return NextResponse.json(
+        { error: "No resume uploaded — add one in Settings first" },
+        { status: 400 }
+      );
+    }
+
+    const { data: file, error: downloadError } = await auth.supabase.storage
+      .from("resumes")
+      .download(resume.storage_path);
+
+    if (downloadError || !file) {
+      return NextResponse.json({ error: "Could not read the stored resume" }, { status: 500 });
+    }
+
+    attachment = {
+      filename: resume.filename,
+      mimeType: resume.mime_type,
+      content: await file.arrayBuffer(),
+    };
+  }
+
   // Dry run reports exactly what would go out, without contacting Gmail.
   if (body.dryRun === true) {
     return NextResponse.json({
@@ -89,6 +120,7 @@ export async function POST(request: Request) {
       suppressed,
       from: fromEmail,
       recipients: allowed,
+      attachment: attachment?.filename ?? null,
     });
   }
 
@@ -101,6 +133,7 @@ export async function POST(request: Request) {
       to,
       subject,
       body: message,
+      attachment,
     });
     if (result.ok) {
       sent.push(to);
