@@ -8,11 +8,13 @@ export default function GmailConnection({
   connectedEmail,
   justConnected,
   error,
+  redirectUri,
 }: {
   configured: boolean;
   connectedEmail: string | null;
   justConnected: boolean;
   error: string | null;
+  redirectUri: string;
 }) {
   const router = useRouter();
   const [busy, setBusy] = useState(false);

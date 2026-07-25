@@ -24,22 +24,48 @@ export interface GmailTokens {
   scope: string | null;
 }
 
-export function getOAuthEnv(): { clientId: string; clientSecret: string; redirectUri: string } | null {
+const CALLBACK_PATH = "/api/admin/gmail/callback";
+
+/** Only accept a configured URL if it's actually a URL. */
+function usableOrigin(value: string | undefined): string | null {
+  if (!value) return null;
+  try {
+    const url = new URL(value);
+    return url.protocol === "http:" || url.protocol === "https:" ? url.origin : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Resolves the OAuth config. `requestOrigin` (the host the admin is actually
+ * browsing) is preferred over configuration, so the redirect URI is right by
+ * construction in every environment rather than depending on an env var being
+ * set correctly. GOOGLE_OAUTH_REDIRECT_URI still overrides everything for
+ * unusual proxy setups.
+ */
+export function getOAuthEnv(
+  requestOrigin?: string
+): { clientId: string; clientSecret: string; redirectUri: string } | null {
   const clientId = process.env.GOOGLE_OAUTH_CLIENT_ID;
   const clientSecret = process.env.GOOGLE_OAUTH_CLIENT_SECRET;
   if (!clientId || !clientSecret) return null;
 
-  const explicit = process.env.GOOGLE_OAUTH_REDIRECT_URI;
-  const site =
-    process.env.NEXT_PUBLIC_SITE_URL ||
-    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
-  const redirectUri = explicit || `${site.replace(/\/$/, "")}/api/admin/gmail/callback`;
+  const explicit = usableOrigin(process.env.GOOGLE_OAUTH_REDIRECT_URI)
+    ? process.env.GOOGLE_OAUTH_REDIRECT_URI!
+    : null;
 
-  return { clientId, clientSecret, redirectUri };
+  const origin =
+    usableOrigin(requestOrigin) ??
+    usableOrigin(process.env.NEXT_PUBLIC_SITE_URL) ??
+    usableOrigin(process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined) ??
+    "http://localhost:3000";
+
+  return { clientId, clientSecret, redirectUri: explicit ?? `${origin}${CALLBACK_PATH}` };
 }
 
-export function buildAuthUrl(state: string): string | null {
-  const env = getOAuthEnv();
+export function buildAuthUrl(state: string, requestOrigin?: string): string | null {
+  const env = getOAuthEnv(requestOrigin);
   if (!env) return null;
 
   const url = new URL("https://accounts.google.com/o/oauth2/v2/auth");
@@ -54,8 +80,10 @@ export function buildAuthUrl(state: string): string | null {
   return url.toString();
 }
 
-export async function exchangeCodeForTokens(code: string) {
-  const env = getOAuthEnv();
+export async function exchangeCodeForTokens(code: string, requestOrigin?: string) {
+  // Must be the same redirect_uri Google saw on the auth request, or the
+  // exchange is rejected — hence threading the origin through here too.
+  const env = getOAuthEnv(requestOrigin);
   if (!env) return { error: "Google OAuth is not configured" };
 
   const res = await fetch("https://oauth2.googleapis.com/token", {

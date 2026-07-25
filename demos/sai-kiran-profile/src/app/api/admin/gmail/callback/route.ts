@@ -32,7 +32,7 @@ export async function GET(request: Request) {
     return NextResponse.redirect(settings);
   }
 
-  const tokens = await exchangeCodeForTokens(code);
+  const tokens = await exchangeCodeForTokens(code, url.origin);
   if ("error" in tokens) {
     settings.searchParams.set("gmail_error", tokens.error!);
     return NextResponse.redirect(settings);

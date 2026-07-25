@@ -5,13 +5,15 @@ import { buildAuthUrl, getOAuthEnv } from "@/lib/gmail";
 export const dynamic = "force-dynamic";
 
 /** GET /api/admin/gmail/auth — redirects to Google's consent screen. */
-export async function GET() {
+export async function GET(request: Request) {
   const auth = await requireAuth();
   if (!auth) {
     return NextResponse.json({ error: "Not signed in" }, { status: 401 });
   }
 
-  if (!getOAuthEnv()) {
+  const origin = new URL(request.url).origin;
+
+  if (!getOAuthEnv(origin)) {
     return NextResponse.json(
       {
         error:
@@ -21,7 +23,7 @@ export async function GET() {
     );
   }
 
-  const url = buildAuthUrl(crypto.randomUUID());
+  const url = buildAuthUrl(crypto.randomUUID(), origin);
   if (!url) {
     return NextResponse.json({ error: "Could not build the consent URL" }, { status: 500 });
   }
