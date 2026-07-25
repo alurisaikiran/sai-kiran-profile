@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import type { Contact } from "@/lib/crm-types";
+import { isExcluded, type Contact, type ContactExclusion } from "@/lib/crm-types";
 
 interface GmailMessage {
   id: string;
@@ -22,10 +22,12 @@ export default function InboxClient({
   connected,
   connectedEmail,
   contacts,
+  exclusions,
 }: {
   connected: boolean;
   connectedEmail: string | null;
   contacts: Contact[];
+  exclusions: ContactExclusion[];
 }) {
   const router = useRouter();
   const [tab, setTab] = useState<Tab>("inbox");
@@ -86,7 +88,12 @@ export default function InboxClient({
         {tab === "inbox" ? (
           <MessageList onFlash={flash} onExtracted={() => router.refresh()} />
         ) : (
-          <Compose contacts={contacts} onFlash={flash} onSent={() => router.refresh()} />
+          <Compose
+            contacts={contacts}
+            exclusions={exclusions}
+            onFlash={flash}
+            onSent={() => router.refresh()}
+          />
         )}
       </div>
     </>
@@ -209,10 +216,12 @@ function MessageList({
 
 function Compose({
   contacts,
+  exclusions,
   onFlash,
   onSent,
 }: {
   contacts: Contact[];
+  exclusions: ContactExclusion[];
   onFlash: (kind: "success" | "error", msg: string) => void;
   onSent: () => void;
 }) {
@@ -222,10 +231,14 @@ function Compose({
   const [confirming, setConfirming] = useState(false);
   const [sending, setSending] = useState(false);
 
-  // One entry per address — a repeat sender shouldn't get two copies.
-  const uniqueContacts = Array.from(
-    new Map(contacts.map((c) => [c.email, c])).values()
+  // One entry per address (a repeat sender shouldn't get two copies), and
+  // never offer an excluded address — the server rejects them anyway.
+  const uniqueContacts = Array.from(new Map(contacts.map((c) => [c.email, c])).values()).filter(
+    (c) => !isExcluded(c.email, exclusions)
   );
+  const excludedCount = new Set(
+    contacts.filter((c) => isExcluded(c.email, exclusions)).map((c) => c.email)
+  ).size;
 
   function toggle(email: string) {
     setSelected((prev) => {
@@ -312,9 +325,17 @@ function Compose({
       <div className="admin-section-card">
         <h2>Recipients ({selected.size} selected)</h2>
 
+        {excludedCount > 0 && (
+          <p className="admin-muted-text" style={{ marginBottom: 12 }}>
+            {excludedCount} contact{excludedCount === 1 ? " is" : "s are"} hidden by your exclusion
+            list.
+          </p>
+        )}
+
         {uniqueContacts.length === 0 ? (
           <div className="admin-empty">
-            No contacts yet. Extract them from your inbox, or wait for contact-form submissions.
+            No contactable people yet. Extract them from your inbox, or wait for contact-form
+            submissions.
           </div>
         ) : (
           <>

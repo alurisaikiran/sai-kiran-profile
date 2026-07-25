@@ -18,6 +18,28 @@ export interface Contact {
   created_at: string;
 }
 
+export const EXCLUSION_KINDS = ["email", "domain"] as const;
+export type ExclusionKind = (typeof EXCLUSION_KINDS)[number];
+
+export interface ContactExclusion {
+  id: string;
+  value: string;
+  kind: ExclusionKind;
+  reason: string | null;
+  created_at: string;
+}
+
+/** True if `email` is suppressed by any exclusion rule. */
+export function isExcluded(email: string, exclusions: ContactExclusion[]): boolean {
+  const normalized = email.trim().toLowerCase();
+  const domain = normalized.split("@")[1] ?? "";
+  return exclusions.some((e) =>
+    e.kind === "domain"
+      ? domain === e.value.toLowerCase().replace(/^@/, "")
+      : normalized === e.value.toLowerCase()
+  );
+}
+
 /** Field length caps, enforced server-side on the public submission route. */
 export const CONTACT_LIMITS = {
   name: 120,

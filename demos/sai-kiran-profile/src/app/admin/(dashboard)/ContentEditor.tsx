@@ -1,40 +1,66 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { TextField, TagField, ImageField } from "@/components/admin/fields";
-import {
-  EMPTY_CREDENTIAL_ITEM,
-  EMPTY_EXPERIENCE_ITEM,
-  type SiteContent,
-} from "@/lib/content-types";
+import type { SectionKey, SiteContent } from "@/lib/content-types";
 
-const SECTIONS = [
+import HeroEditor from "@/components/admin/editors/HeroEditor";
+import StatsEditor from "@/components/admin/editors/StatsEditor";
+import AboutEditor from "@/components/admin/editors/AboutEditor";
+import SkillsEditor from "@/components/admin/editors/SkillsEditor";
+import ProjectsEditor from "@/components/admin/editors/ProjectsEditor";
+import LaunchedEditor from "@/components/admin/editors/LaunchedEditor";
+import ExperienceEditor from "@/components/admin/editors/ExperienceEditor";
+import CredentialsEditor from "@/components/admin/editors/CredentialsEditor";
+import ContactEditor from "@/components/admin/editors/ContactEditor";
+
+const SECTIONS: Array<{ key: SectionKey; label: string }> = [
   { key: "hero", label: "Hero" },
+  { key: "stats", label: "Stats" },
   { key: "about", label: "About" },
   { key: "skills", label: "Skills" },
+  { key: "projects", label: "Projects" },
+  { key: "launched", label: "Launched" },
   { key: "experience", label: "Experience" },
   { key: "credentials", label: "Credentials" },
   { key: "contact", label: "Contact" },
-] as const;
-
-type EditableSection = (typeof SECTIONS)[number]["key"];
+];
 
 export default function ContentEditor({ initialContent }: { initialContent: SiteContent }) {
   const router = useRouter();
   const [content, setContent] = useState<SiteContent>(initialContent);
-  const [active, setActive] = useState<EditableSection>("hero");
+  const [active, setActive] = useState<SectionKey>("hero");
   const [saving, setSaving] = useState(false);
+  const [dirty, setDirty] = useState(false);
   const [notice, setNotice] = useState<{ kind: "success" | "error"; msg: string } | null>(null);
+
+  // After a save we call router.refresh(), which re-renders the server
+  // component and hands us fresh props. useState ignores prop changes after
+  // mount, so sync explicitly — but never over unsaved edits.
+  const lastServerContent = useRef(initialContent);
+  useEffect(() => {
+    if (initialContent !== lastServerContent.current) {
+      lastServerContent.current = initialContent;
+      if (!dirty) setContent(initialContent);
+    }
+  }, [initialContent, dirty]);
+
+  // Don't let a stray refresh or tab close silently drop pending edits.
+  useEffect(() => {
+    if (!dirty) return;
+    const warn = (e: BeforeUnloadEvent) => e.preventDefault();
+    window.addEventListener("beforeunload", warn);
+    return () => window.removeEventListener("beforeunload", warn);
+  }, [dirty]);
 
   function flash(kind: "success" | "error", msg: string) {
     setNotice({ kind, msg });
     setTimeout(() => setNotice(null), 4000);
   }
 
-  /** Replaces the active section's data in local state. */
-  function patch<K extends EditableSection>(key: K, value: SiteContent[K]) {
+  function patch<K extends SectionKey>(key: K, value: SiteContent[K]) {
     setContent((c) => ({ ...c, [key]: value }));
+    setDirty(true);
   }
 
   async function save() {
@@ -49,7 +75,8 @@ export default function ContentEditor({ initialContent }: { initialContent: Site
         const data = await res.json().catch(() => ({}));
         throw new Error(data.error || `${res.status} ${res.statusText}`);
       }
-      flash("success", "Saved successfully.");
+      setDirty(false);
+      flash("success", `${SECTIONS.find((s) => s.key === active)?.label} saved.`);
       router.refresh();
     } catch (err) {
       flash("error", `Save failed: ${err instanceof Error ? err.message : "unknown"}`);
@@ -57,10 +84,15 @@ export default function ContentEditor({ initialContent }: { initialContent: Site
     setSaving(false);
   }
 
+  const section = content[active];
+
   return (
     <>
       <div className="admin-topbar">
-        <h1>Site Content</h1>
+        <h1>
+          Site Content
+          {dirty && <span className="admin-dirty-dot" title="Unsaved changes" />}
+        </h1>
         <button className="admin-btn primary" onClick={save} disabled={saving}>
           {saving ? "Saving…" : "Save changes"}
         </button>
@@ -81,276 +113,35 @@ export default function ContentEditor({ initialContent }: { initialContent: Site
           ))}
         </div>
 
-        {active === "hero" && <HeroEditor data={content.hero} onChange={(v) => patch("hero", v)} />}
-        {active === "about" && <AboutEditor data={content.about} onChange={(v) => patch("about", v)} />}
-        {active === "skills" && <SkillsEditor data={content.skills} onChange={(v) => patch("skills", v)} />}
-        {active === "experience" && (
-          <ExperienceEditor data={content.experience} onChange={(v) => patch("experience", v)} />
-        )}
-        {active === "credentials" && (
-          <CredentialsEditor data={content.credentials} onChange={(v) => patch("credentials", v)} />
-        )}
-        {active === "contact" && <ContactEditor data={content.contact} onChange={(v) => patch("contact", v)} />}
-      </div>
-    </>
-  );
-}
-
-/* ── Section editors ── */
-
-function HeroEditor({
-  data,
-  onChange,
-}: {
-  data: SiteContent["hero"];
-  onChange: (v: SiteContent["hero"]) => void;
-}) {
-  return (
-    <div className="admin-section-card">
-      <h2>Hero</h2>
-      <ImageField label="Photo" value={data.photo} onChange={(photo) => onChange({ ...data, photo })} />
-      <TextField label="Name" value={data.name} onChange={(name) => onChange({ ...data, name })} />
-      <TextField label="Eyebrow" value={data.eyebrow} onChange={(eyebrow) => onChange({ ...data, eyebrow })} />
-      <TextField
-        label="Description"
-        value={data.description}
-        onChange={(description) => onChange({ ...data, description })}
-        multiline
-      />
-      <TagField label="Roles" tags={data.roles} onChange={(roles) => onChange({ ...data, roles })} />
-    </div>
-  );
-}
-
-function AboutEditor({
-  data,
-  onChange,
-}: {
-  data: SiteContent["about"];
-  onChange: (v: SiteContent["about"]) => void;
-}) {
-  return (
-    <>
-      <div className="admin-section-card">
-        <h2>About</h2>
-        <TextField label="Eyebrow" value={data.eyebrow} onChange={(eyebrow) => onChange({ ...data, eyebrow })} />
-        <TextField label="Heading" value={data.heading} onChange={(heading) => onChange({ ...data, heading })} />
-        {data.paragraphs.map((p, i) => (
-          <TextField
-            key={i}
-            label={`Paragraph ${i + 1}`}
-            value={p}
-            multiline
-            onChange={(v) => {
-              const paragraphs = [...data.paragraphs];
-              paragraphs[i] = v;
-              onChange({ ...data, paragraphs });
-            }}
-          />
-        ))}
-      </div>
-      {data.cards.map((card, i) => (
-        <div className="admin-section-card" key={i}>
-          <h2>Card {i + 1}</h2>
-          <TextField
-            label="Number"
-            value={card.number}
-            onChange={(v) => onChange({ ...data, cards: replaceAt(data.cards, i, { ...card, number: v }) })}
-          />
-          <TextField
-            label="Title"
-            value={card.title}
-            onChange={(v) => onChange({ ...data, cards: replaceAt(data.cards, i, { ...card, title: v }) })}
-          />
-          <TextField
-            label="Description"
-            value={card.description}
-            multiline
-            onChange={(v) => onChange({ ...data, cards: replaceAt(data.cards, i, { ...card, description: v }) })}
-          />
-        </div>
-      ))}
-    </>
-  );
-}
-
-function SkillsEditor({
-  data,
-  onChange,
-}: {
-  data: SiteContent["skills"];
-  onChange: (v: SiteContent["skills"]) => void;
-}) {
-  return (
-    <>
-      <div className="admin-section-card">
-        <h2>Skills</h2>
-        <TextField label="Eyebrow" value={data.eyebrow} onChange={(eyebrow) => onChange({ ...data, eyebrow })} />
-        <TextField label="Heading" value={data.heading} onChange={(heading) => onChange({ ...data, heading })} />
-      </div>
-      {data.categories.map((cat, i) => (
-        <div className="admin-section-card" key={i}>
-          <h2>{cat.title}</h2>
-          <TextField
-            label="Title"
-            value={cat.title}
-            onChange={(v) =>
-              onChange({ ...data, categories: replaceAt(data.categories, i, { ...cat, title: v }) })
-            }
-          />
-          <TagField
-            label="Skills"
-            tags={cat.items}
-            onChange={(items) =>
-              onChange({ ...data, categories: replaceAt(data.categories, i, { ...cat, items }) })
-            }
-          />
-        </div>
-      ))}
-    </>
-  );
-}
-
-function ExperienceEditor({
-  data,
-  onChange,
-}: {
-  data: SiteContent["experience"];
-  onChange: (v: SiteContent["experience"]) => void;
-}) {
-  return (
-    <div>
-      <div className="admin-list-actions">
-        <button
-          type="button"
-          className="admin-btn primary"
-          onClick={() => onChange({ ...data, items: [...data.items, { ...EMPTY_EXPERIENCE_ITEM }] })}
-        >
-          + Add Role
-        </button>
-      </div>
-      {data.items.map((item, i) => (
-        <div className="admin-section-card" key={i}>
-          <div className="admin-section-card-head">
-            <h2>Role {i + 1}</h2>
-            <button
-              type="button"
-              className="admin-btn ghost"
-              onClick={() => onChange({ ...data, items: removeAt(data.items, i) })}
-            >
-              Remove
-            </button>
+        {!section ? (
+          <div className="admin-empty">
+            This section has no content yet. Run <code>npm run seed</code> to load your starting
+            content into Supabase, then reload.
           </div>
-          <TextField
-            label="Date"
-            value={item.date}
-            onChange={(v) => onChange({ ...data, items: replaceAt(data.items, i, { ...item, date: v }) })}
-          />
-          <TextField
-            label="Title"
-            value={item.title}
-            onChange={(v) => onChange({ ...data, items: replaceAt(data.items, i, { ...item, title: v }) })}
-          />
-          <TextField
-            label="Description"
-            value={item.description}
-            multiline
-            onChange={(v) => onChange({ ...data, items: replaceAt(data.items, i, { ...item, description: v }) })}
-          />
-          <TagField
-            label="Tags"
-            tags={item.tags}
-            onChange={(tags) => onChange({ ...data, items: replaceAt(data.items, i, { ...item, tags }) })}
-          />
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function CredentialsEditor({
-  data,
-  onChange,
-}: {
-  data: SiteContent["credentials"];
-  onChange: (v: SiteContent["credentials"]) => void;
-}) {
-  return (
-    <div>
-      <div className="admin-list-actions">
-        <button
-          type="button"
-          className="admin-btn primary"
-          onClick={() => onChange({ ...data, items: [...data.items, { ...EMPTY_CREDENTIAL_ITEM }] })}
-        >
-          + Add Credential
-        </button>
+        ) : (
+          <>
+            {active === "hero" && <HeroEditor data={content.hero} onChange={(v) => patch("hero", v)} />}
+            {active === "stats" && <StatsEditor data={content.stats} onChange={(v) => patch("stats", v)} />}
+            {active === "about" && <AboutEditor data={content.about} onChange={(v) => patch("about", v)} />}
+            {active === "skills" && <SkillsEditor data={content.skills} onChange={(v) => patch("skills", v)} />}
+            {active === "projects" && (
+              <ProjectsEditor data={content.projects} onChange={(v) => patch("projects", v)} />
+            )}
+            {active === "launched" && (
+              <LaunchedEditor data={content.launched} onChange={(v) => patch("launched", v)} />
+            )}
+            {active === "experience" && (
+              <ExperienceEditor data={content.experience} onChange={(v) => patch("experience", v)} />
+            )}
+            {active === "credentials" && (
+              <CredentialsEditor data={content.credentials} onChange={(v) => patch("credentials", v)} />
+            )}
+            {active === "contact" && (
+              <ContactEditor data={content.contact} onChange={(v) => patch("contact", v)} />
+            )}
+          </>
+        )}
       </div>
-      {data.items.map((item, i) => (
-        <div className="admin-section-card" key={i}>
-          <div className="admin-section-card-head">
-            <h2>Credential {i + 1}</h2>
-            <button
-              type="button"
-              className="admin-btn ghost"
-              onClick={() => onChange({ ...data, items: removeAt(data.items, i) })}
-            >
-              Remove
-            </button>
-          </div>
-          <TextField
-            label="Badge"
-            value={item.badge}
-            onChange={(v) => onChange({ ...data, items: replaceAt(data.items, i, { ...item, badge: v }) })}
-          />
-          <TextField
-            label="Title"
-            value={item.title}
-            onChange={(v) => onChange({ ...data, items: replaceAt(data.items, i, { ...item, title: v }) })}
-          />
-          <TextField
-            label="Subtitle"
-            value={item.subtitle}
-            onChange={(v) => onChange({ ...data, items: replaceAt(data.items, i, { ...item, subtitle: v }) })}
-          />
-        </div>
-      ))}
-    </div>
+    </>
   );
-}
-
-function ContactEditor({
-  data,
-  onChange,
-}: {
-  data: SiteContent["contact"];
-  onChange: (v: SiteContent["contact"]) => void;
-}) {
-  return (
-    <div className="admin-section-card">
-      <h2>Contact</h2>
-      <TextField label="Eyebrow" value={data.eyebrow} onChange={(eyebrow) => onChange({ ...data, eyebrow })} />
-      <TextField label="Heading" value={data.heading} onChange={(heading) => onChange({ ...data, heading })} />
-      <TextField
-        label="Description"
-        value={data.description}
-        multiline
-        onChange={(description) => onChange({ ...data, description })}
-      />
-      <TextField label="Email" value={data.email} onChange={(email) => onChange({ ...data, email })} />
-      <TextField label="Phone" value={data.phone} onChange={(phone) => onChange({ ...data, phone })} />
-    </div>
-  );
-}
-
-/* ── Array helpers ── */
-
-function replaceAt<T>(arr: T[], index: number, value: T): T[] {
-  const next = [...arr];
-  next[index] = value;
-  return next;
-}
-
-function removeAt<T>(arr: T[], index: number): T[] {
-  return arr.filter((_, i) => i !== index);
 }

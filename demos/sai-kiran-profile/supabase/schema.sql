@@ -91,6 +91,28 @@ create policy "contacts_auth_all"
   using (true)
   with check (true);
 
+-- ── Suppression list ────────────────────────────────────────────────────────
+-- Addresses and domains that must never receive bulk mail. Enforced
+-- server-side on every send, so an excluded address can't be emailed even if
+-- it somehow gets selected in the UI.
+create table if not exists contact_exclusions (
+  id         uuid primary key default gen_random_uuid(),
+  value      text not null unique,          -- an email address, or a bare domain
+  kind       text not null default 'email'
+               check (kind in ('email', 'domain')),
+  reason     text,
+  created_at timestamptz not null default now()
+);
+
+alter table contact_exclusions enable row level security;
+
+drop policy if exists "contact_exclusions_auth_all" on contact_exclusions;
+create policy "contact_exclusions_auth_all"
+  on contact_exclusions for all
+  to authenticated
+  using (true)
+  with check (true);
+
 -- ── Third-party integrations (OAuth tokens) ─────────────────────────────────
 -- These rows are credentials, so they get a tighter policy than the tables
 -- above: no anon access at all, and each row is readable only by its owner.

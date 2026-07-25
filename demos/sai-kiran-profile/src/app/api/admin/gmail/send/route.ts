@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { requireAuth } from "@/lib/auth";
 import { getAccessToken, sendEmail } from "@/lib/gmail";
-import { isValidEmail } from "@/lib/crm-types";
+import { isExcluded, isValidEmail, type ContactExclusion } from "@/lib/crm-types";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -62,6 +62,20 @@ export async function POST(request: Request) {
     );
   }
 
+  // Suppression list is enforced here, not just in the UI — an excluded
+  // address must be unmailable regardless of what the client sends.
+  const { data: exclusionRows } = await auth.supabase.from("contact_exclusions").select("*");
+  const exclusions = (exclusionRows ?? []) as ContactExclusion[];
+  const allowed = recipients.filter((r) => !isExcluded(r, exclusions));
+  const suppressed = recipients.length - allowed.length;
+
+  if (allowed.length === 0) {
+    return NextResponse.json(
+      { error: "Every selected recipient is on the exclusion list" },
+      { status: 400 }
+    );
+  }
+
   const { token, email: fromEmail, error } = await getAccessToken(auth.supabase, auth.user.id);
   if (!token) {
     return NextResponse.json({ error: error ?? "Gmail is not connected" }, { status: 400 });
@@ -71,16 +85,17 @@ export async function POST(request: Request) {
   if (body.dryRun === true) {
     return NextResponse.json({
       dryRun: true,
-      wouldSend: recipients.length,
+      wouldSend: allowed.length,
+      suppressed,
       from: fromEmail,
-      recipients,
+      recipients: allowed,
     });
   }
 
   const sent: string[] = [];
   const failed: Array<{ email: string; error: string }> = [];
 
-  for (const to of recipients) {
+  for (const to of allowed) {
     const result = await sendEmail(token, {
       from: fromEmail ?? "me",
       to,
@@ -101,5 +116,5 @@ export async function POST(request: Request) {
       .in("email", sent);
   }
 
-  return NextResponse.json({ sent: sent.length, failed });
+  return NextResponse.json({ sent: sent.length, failed, suppressed });
 }
