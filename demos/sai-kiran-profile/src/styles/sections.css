@@ -78,12 +78,21 @@
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 34px 0 24px; }
 
 @media (max-width: 740px) {
-  .hero { min-height: auto; padding-top: 46px; }
+  .hero {
+    min-height: auto;
+    padding: 48px 22px 60px;
+  }
   .ai-bg { opacity: 0.46; }
   .hero::before, .hero::after { display: none; }
-  .hero-photo { width: 92px; height: 92px; }
-  h1 { font-size: clamp(42px, 13vw, 58px); }
-  .hero-text { font-size: 16px; }
+  .hero-photo { width: 96px; height: 96px; margin-bottom: 18px; }
+  h1 { font-size: clamp(38px, 11vw, 52px); }
+  .role-line { font-size: 17px; margin-bottom: 18px; }
+  .hero-text { font-size: 16px; line-height: 1.65; }
+  .hero-actions { margin: 28px 0 20px; }
+
+  /* Contact form is inside a section — give it comfy padding without being cramped */
+  .contact-form { padding: 22px 20px; }
+  .contact-panel { padding: 24px 22px; }
 }
 
 /* ── Stats strip ── */

@@ -135,28 +135,102 @@
   .about-layout { grid-template-columns: 1fr; }
 }
 
+/* Tablet / large phone — full single-column layout kicks in here so 4-col
+   grids don't survive at 700–860px viewports. */
+@media (max-width: 860px) {
+  .about-layout,
+  .contact-section,
+  .launched-inner,
+  .section-heading,
+  .skills-grid,
+  .project-grid,
+  .demo-grid,
+  .credential-grid,
+  .about-cards,
+  .timeline-item {
+    grid-template-columns: 1fr !important;
+  }
+  .skill-card.wide,
+  .project-card.featured,
+  .demo-card:first-child {
+    grid-column: span 1 !important;
+  }
+  .stats-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  /* Timeline: reformat the date so it looks like a proper pill/badge at the
+     top of each card once the two-column grid collapses. */
+  .timeline-item {
+    gap: 14px;
+    padding: 24px 22px;
+  }
+  .timeline-date {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 11px;
+    background: rgba(240, 93, 82, 0.12);
+    border: 1px solid rgba(240, 93, 82, 0.28);
+    border-radius: 999px;
+    width: fit-content;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+  .timeline-item h3 {
+    margin: 0 0 8px;
+    font-size: 20px;
+    line-height: 1.25;
+  }
+  .timeline-item p {
+    margin: 0 0 14px;
+    font-size: 14.5px;
+    line-height: 1.65;
+  }
+  .timeline-item .mini-tags { gap: 8px; }
+  .timeline-item .mini-tags span {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
+
 @media (max-width: 740px) {
-  .site-header { align-items: center; }
+  .site-header {
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+  }
+  .brand { font-size: 15px; }
+  .brand-mark { width: 34px; height: 34px; }
   .nav-toggle { display: block; }
 
   .site-nav {
     position: absolute;
-    top: 70px;
-    left: 18px;
-    right: 18px;
+    top: calc(100% + 6px);
+    left: 12px;
+    right: 12px;
     display: none;
     flex-direction: column;
     align-items: stretch;
-    padding: 10px;
+    padding: 8px;
     background: var(--ink-2);
     border: 1px solid var(--line);
-    border-radius: 8px;
+    border-radius: 10px;
     box-shadow: var(--shadow);
   }
   .site-nav.open { display: flex; }
+  .site-nav a { padding: 12px 14px; font-size: 15px; }
 
   .skill-card.wide, .project-card.featured, .demo-card:first-child { grid-column: span 1; }
-  .stats-strip, .about-cards, .skills-grid, .project-grid, .demo-grid, .credential-grid { grid-template-columns: 1fr; }
+
+  /* Keep stats compact — 5 stats stacked in 1 column is a scroll marathon */
+  .stats-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stats-strip div { min-height: 92px; padding: 18px 20px; }
+  .stats-strip strong { font-size: 20px; }
+
+  /* Credentials/about — 2 columns so they don't take up so much vertical space */
+  .credential-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .about-cards { grid-template-columns: 1fr; }
+  .skills-grid, .project-grid, .demo-grid { grid-template-columns: 1fr; }
 
   .hero-actions, .contact-actions { flex-direction: column; }
   .hero-actions .button, .contact-actions .button { width: 100%; }
@@ -165,11 +239,10 @@
   .demo-heading h3 { font-size: clamp(22px, 6vw, 32px); margin-bottom: 8px; }
   .demo-card { grid-template-columns: 1fr; }
   .demo-card img { min-height: 200px; max-height: 220px; width: 100%; }
-  .demo-card div { padding: 16px; gap: 8px; }
+  .demo-card div { padding: 18px; gap: 8px; }
   .demo-card h4 { font-size: 18px; }
   .demo-card p { font-size: 14px; }
 
-  .timeline-item { grid-template-columns: 1fr; }
   .launched-highlights { grid-template-columns: 1fr; }
   .launched-meta { grid-template-columns: 1fr; }
   .launched-actions { flex-direction: column; }
@@ -177,4 +250,22 @@
 
   .section { padding-inline: 22px; }
   .site-footer { flex-direction: column; }
+}
+
+/* Very small screens (older phones, iPhone SE, etc.) */
+@media (max-width: 420px) {
+  .section { padding-inline: 16px; padding-block: 60px; }
+  .stats-strip { grid-template-columns: 1fr; }
+  .stats-strip div { min-height: 78px; padding: 14px 18px; }
+  .credential-grid { grid-template-columns: 1fr; }
+
+  .site-header { padding: 10px 14px; }
+  .brand-mark { width: 32px; height: 32px; font-size: 12px; }
+
+  h1 { font-size: clamp(38px, 12vw, 48px); }
+  h2 { font-size: clamp(26px, 8vw, 34px); }
+  .hero-photo { width: 88px; height: 88px; }
+  .hero-text { font-size: 15px; }
+
+  .button { padding: 12px 16px; font-size: 14px; }
 }

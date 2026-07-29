@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "@/styles/tokens.css";
 import "@/styles/base.css";
 import "@/styles/components.css";
@@ -13,6 +13,13 @@ const DESCRIPTION =
 const SOCIAL_DESCRIPTION =
   "AWS Certified Developer and full-stack engineer. Building websites, product UIs, and AI workflows. Creator of startlearning.net.";
 const OG_IMAGE = `${SITE_URL}/assets/profile.png`;
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#0d1220",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
