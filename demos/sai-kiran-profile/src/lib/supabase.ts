@@ -19,6 +19,18 @@ export function createPublicClient() {
   });
 }
 
+/**
+ * Service-role client — bypasses RLS. Only for use in server-side cron jobs
+ * and background tasks that have no user session. Never expose to the client.
+ */
+export function createServiceClient() {
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!serviceKey) throw new Error("SUPABASE_SERVICE_ROLE_KEY is not set");
+  return createClient(url!, serviceKey, {
+    auth: { persistSession: false, autoRefreshToken: false },
+  });
+}
+
 export const SUPABASE_URL = url;
 export const SUPABASE_ANON_KEY = anonKey;
 export const ASSETS_BUCKET = "portfolio-assets";

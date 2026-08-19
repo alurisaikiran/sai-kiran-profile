@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import DateRangePicker from "./DateRangePicker";
 import {
   DEFAULT_RANGE,
@@ -20,6 +20,42 @@ export interface GmailMessage {
 }
 
 const PAGE_SIZE = 25;
+
+/**
+ * Results are cached per browser tab so switching admin pages doesn't throw
+ * the inbox away and force a manual reload. sessionStorage (not local) keeps
+ * this to the current tab and clears it on close; sign-out clears it too.
+ * Anything older than the TTL is refetched rather than shown as current.
+ */
+export const INBOX_CACHE_KEY = "sk_admin_inbox_v1";
+const CACHE_TTL_MS = 5 * 60 * 1000;
+
+interface InboxCache {
+  messages: GmailMessage[];
+  nextPageToken: string | null;
+  fetchedAt: number;
+  range: DateRange;
+}
+
+function readCache(): InboxCache | null {
+  try {
+    const raw = sessionStorage.getItem(INBOX_CACHE_KEY);
+    if (!raw) return null;
+    const cache = JSON.parse(raw) as InboxCache;
+    if (Date.now() - cache.fetchedAt > CACHE_TTL_MS) return null;
+    return cache;
+  } catch {
+    return null;
+  }
+}
+
+function writeCache(cache: InboxCache) {
+  try {
+    sessionStorage.setItem(INBOX_CACHE_KEY, JSON.stringify(cache));
+  } catch {
+    // Quota or private-mode failures are not worth surfacing.
+  }
+}
 
 export default function MessageList({
   onFlash,

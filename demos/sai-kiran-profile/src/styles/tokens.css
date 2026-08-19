@@ -1,15 +1,18 @@
-/* Design tokens — single source of truth for every colour, shadow, and spacing value. */
+/* Design tokens — cinematic dark palette */
 :root {
-  --ink:       #0d1220;
-  --ink-2:     #151a2d;
-  --paper:     #f4f0e8;
-  --paper-2:   #fffaf0;
-  --muted:     #647084;
-  --line:      rgba(255, 255, 255, 0.12);
-  --line-dark: rgba(13, 18, 32, 0.14);
-  --cyan:      #10c8d2;
-  --violet:    #7c4dff;
-  --coral:     #f05d52;
-  --green:     #9bc53d;
-  --shadow:    0 24px 70px rgba(13, 18, 32, 0.22);
+  --bg:          #0A0806;
+  --bg-2:        #0E0B08;
+  --bg-card:     rgba(255, 255, 255, 0.03);
+  --gold:        #D4AF37;
+  --gold-bright: #E8C547;
+  --gold-dim:    rgba(212, 175, 55, 0.15);
+  --gold-glow:   rgba(212, 175, 55, 0.07);
+  --text:        #E8DFD8;
+  --text-2:      #C4B5A5;
+  --muted:       #8A7A6E;
+  --line:        rgba(212, 175, 55, 0.14);
+  --line-soft:   rgba(232, 223, 216, 0.07);
+  --shadow:      0 24px 70px rgba(0, 0, 0, 0.7);
+  --success:     #9BC53D;
+  --header-h:    71px;
 }

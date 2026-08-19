@@ -353,6 +353,61 @@ function wrapBase64(value: string): string {
   return value.replace(/(.{76})/g, "$1\r\n");
 }
 
+/**
+ * Sends a multipart/alternative email with both HTML and plain-text parts.
+ * Use this for digest emails and anything that benefits from rich formatting.
+ */
+export async function sendHtmlEmail(
+  accessToken: string,
+  opts: {
+    from: string;
+    to: string;
+    subject: string;
+    html: string;
+    text: string;
+  }
+): Promise<{ ok: boolean; id?: string; error?: string }> {
+  const boundary = `b_${Date.now().toString(36)}_${Math.random().toString(36).slice(2)}`;
+
+  const mime = [
+    `From: ${opts.from}`,
+    `To: ${opts.to}`,
+    `Subject: ${opts.subject}`,
+    "MIME-Version: 1.0",
+    `Content-Type: multipart/alternative; boundary="${boundary}"`,
+    "",
+    `--${boundary}`,
+    'Content-Type: text/plain; charset="UTF-8"',
+    "Content-Transfer-Encoding: quoted-printable",
+    "",
+    opts.text,
+    "",
+    `--${boundary}`,
+    'Content-Type: text/html; charset="UTF-8"',
+    "Content-Transfer-Encoding: quoted-printable",
+    "",
+    opts.html,
+    "",
+    `--${boundary}--`,
+  ].join("\r\n");
+
+  const res = await fetch("https://gmail.googleapis.com/gmail/v1/users/me/messages/send", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ raw: toBase64Url(mime) }),
+    cache: "no-store",
+  });
+
+  const body = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    return { ok: false, error: body?.error?.message || `Gmail send failed (${res.status})` };
+  }
+  return { ok: true, id: body.id };
+}
+
 export async function sendEmail(
   accessToken: string,
   opts: {
