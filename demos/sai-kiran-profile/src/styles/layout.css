@@ -247,7 +247,7 @@
 }
 
 @media (max-width: 420px) {
-  .section { padding-inline: 16px; padding-block: 64px; }
+  .section { padding-inline: 16px; padding-block: 36px; }
   .stats-strip { grid-template-columns: 1fr; }
   .credential-grid { grid-template-columns: 1fr; }
   .site-header { padding: 10px 14px; }

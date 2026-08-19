@@ -212,13 +212,20 @@
 
 /* ── About ── */
 .about { background: var(--bg); }
-.about .section-heading { margin-bottom: 12px; }
 .about-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 280px;
   gap: 56px;
   align-items: start;
 }
+
+.about .section-heading {
+  grid-template-columns: 1fr;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.about-portrait { display: flex; justify-content: center; }
 
 .about-copy {
   background: transparent !important;
@@ -770,11 +777,12 @@
   .hero-scroll-cue { left: 50%; transform: translateX(-50%); }
   .contact-form { padding: 22px 20px; }
   .contact-panel { padding: 24px 22px; }
-  /* Hide portrait card on mobile — avoids blank gap */
-  .portrait-card-wrap { display: none; }
-  .about-layout { gap: 20px; }
+  /* Portrait: move to top of about section on mobile */
+  .about-layout { gap: 24px; }
+  .about-portrait { order: -1; }
+  .about-portrait .portrait-card-wrap { max-width: 180px; }
+  .about-portrait .portrait-card img { height: 240px; }
   .about-cards { grid-template-columns: 1fr 1fr; }
   /* Tighten section headings on mobile */
   .section-heading { margin-bottom: 16px; gap: 8px; }
-  .about .section-heading { margin-bottom: 12px; }
 }
