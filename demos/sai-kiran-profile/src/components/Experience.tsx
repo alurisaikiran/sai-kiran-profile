@@ -22,7 +22,7 @@ function Card({
   item: ExperienceItem;
   index: number;
   total: number;
-  wrapRef: React.RefObject<HTMLDivElement>;
+  wrapRef: React.RefObject<HTMLDivElement | null>;
 }) {
   // Track the shared wrap container's scroll progress
   const { scrollYProgress } = useScroll({
