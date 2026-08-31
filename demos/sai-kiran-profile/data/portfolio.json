@@ -1,15 +1,15 @@
 {
   "hero": {
     "name": "Sai Kiran Aluri",
-    "eyebrow": "Website Developer · AWS Certified Developer · United States",
+    "eyebrow": "Senior Full Stack Engineer · Angular · AWS Certified Developer · USA",
     "roles": [
-      "Website Developer",
-      "Frontend Developer",
-      "Full-Stack Engineer",
-      "AWS Certified Developer",
-      "AI Workflow Builder"
+      "Angular Developer",
+      "Full Stack Engineer",
+      "Senior Software Engineer",
+      "Spring Boot Developer",
+      "AWS Certified Developer"
     ],
-    "description": "I build modern websites, polished web interfaces, full-stack product features, and cloud-backed AI workflows. Currently building at Dynodine and creating startlearning.net to help people learn AI tools, prompts, and automations.",
+    "description": "Senior Full Stack Software Engineer specializing in Angular enterprise applications, reusable UI component libraries, and scalable front-end architectures. Currently at The Home Depot building enterprise design systems and AI-integrated Angular experiences. AWS Certified Developer.",
     "photo": "/assets/profile.png",
     "photoAlt": "Sai Kiran Aluri",
     "actions": [
@@ -24,42 +24,42 @@
     ]
   },
   "stats": [
-    { "value": "Websites", "label": "Design and development" },
+    { "value": "Angular", "label": "Enterprise UI specialist" },
     { "value": "AWS", "label": "Certified Developer" },
-    { "value": "2024", "label": "Frontend at Dynodine" },
-    { "value": "AI", "label": "Learning in public" },
-    { "value": "Full Stack", "label": "Web, APIs, cloud" }
+    { "value": "Home Depot", "label": "Mar 2025 – Present" },
+    { "value": "Truist", "label": "Banking · 2023–2025" },
+    { "value": "Full Stack", "label": "Angular, Java, Spring Boot" }
   ],
   "about": {
     "eyebrow": "About Me",
-    "heading": "A website developer and full-stack engineer with a product mindset.",
+    "heading": "Senior full-stack engineer specializing in Angular enterprise applications and scalable UI architecture.",
     "paragraphs": [
-      "I create business-ready websites and interfaces that feel sharp, fast, and easy to use. My work spans frontend implementation, API integration, cloud services, and AI workflow experiments.",
-      "Outside of day-to-day engineering, I am building and sharing AI learning material through startlearning.net, covering prompt engineering, n8n automations, GPT, Claude, Gemini, and agents."
+      "I build and maintain enterprise Angular applications with a strong focus on reusable component libraries, design systems, and scalable front-end architecture. My work spans the full stack — Angular, TypeScript, Java, Spring Boot, REST APIs, PostgreSQL, Docker, and AWS.",
+      "I have shipped production software at The Home Depot and Truist Bank, including AI-integrated Angular experiences, enterprise design-language systems, and high-volume banking workflows. I also run startlearning.net to share what I learn about AI tools and automation."
     ],
     "actions": [
       { "label": "View Skills", "href": "#skills", "variant": "primary compact" },
-      { "label": "See Demos", "href": "#projects", "variant": "secondary compact" }
+      { "label": "See Experience", "href": "#experience", "variant": "secondary compact" }
     ],
     "cards": [
-      { "number": "01", "title": "Websites", "description": "Responsive business websites, landing pages, service pages, demo sites, and conversion-focused sections." },
-      { "number": "02", "title": "Cloud", "description": "AWS Lambda, S3, DynamoDB, API Gateway, CloudWatch, and CI/CD foundations." },
-      { "number": "03", "title": "AI", "description": "Prompt engineering, OpenAI API, Claude, LangChain, Hugging Face, and AI agents." }
+      { "number": "01", "title": "Angular", "description": "Enterprise component libraries, design systems, Storybook, Angular modernization, and AI-integrated front-end experiences." },
+      { "number": "02", "title": "Spring Boot", "description": "REST API microservices, OAuth2/JWT, Apache Kafka, PostgreSQL, and enterprise back-end architecture." },
+      { "number": "03", "title": "Cloud & DevOps", "description": "AWS, Docker, Kubernetes, Jenkins, GitLab CI/CD, SonarQube, and automated build and deployment pipelines." }
     ]
   },
   "skills": {
     "eyebrow": "Skills Set",
     "heading": "Technologies I build with.",
     "actions": [
-      { "label": "View Website Work", "href": "#projects", "variant": "primary compact" },
-      { "label": "Ask About a Build", "href": "#contact", "variant": "ghost compact" }
+      { "label": "View Experience", "href": "#experience", "variant": "primary compact" },
+      { "label": "Contact Me", "href": "#contact", "variant": "ghost compact" }
     ],
     "categories": [
-      { "title": "Frontend", "flip": true, "items": ["TypeScript", "React", "JavaScript", "HTML5", "CSS", "jQuery", "Responsive UI", "REST Integration"] },
-      { "title": "Cloud & AWS", "flip": true, "items": ["AWS Lambda", "S3", "DynamoDB", "CloudWatch", "API Gateway", "CodePipeline", "Serverless"] },
-      { "title": "Backend", "flip": true, "items": ["Java", "Spring", "Spring Boot", "Node.js", "REST APIs", "MySQL", "MongoDB"] },
-      { "title": "AI / Automation", "flip": false, "items": ["OpenAI API", "Claude", "LangChain", "Hugging Face", "Prompt Engineering", "AI Agents", "n8n Automation"] },
-      { "title": "Developer Tools & Workflow", "flip": true, "wide": true, "items": ["Git", "Jenkins", "Docker", "Agile", "Component Design", "Performance Tuning", "Accessibility Basics", "Deployment", "CI/CD"] }
+      { "title": "Angular & Frontend", "flip": true, "items": ["Angular", "TypeScript", "JavaScript", "HTML5", "CSS3", "SCSS", "Responsive Design", "Storybook", "Design Tokens", "Component Architecture"] },
+      { "title": "Backend & APIs", "flip": true, "items": ["Java", "Spring Boot", "Spring Framework", "RESTful APIs", "Microservices", "OAuth2", "JWT", "Spring Security"] },
+      { "title": "Database", "flip": false, "items": ["PostgreSQL", "SQL", "Query Optimization", "Indexing", "MySQL", "MongoDB"] },
+      { "title": "Cloud & DevOps", "flip": true, "items": ["AWS", "Docker", "Kubernetes", "Jenkins", "GitLab CI/CD", "SonarQube", "Apache Kafka"] },
+      { "title": "Design & Workflow", "flip": true, "wide": true, "items": ["Figma", "Design Systems", "Storybook", "Agile", "Scrum", "Code Reviews", "JUnit", "Mockito", "CI/CD", "AI Integration"] }
     ]
   },
   "projects": {
@@ -82,16 +82,16 @@
     },
     "cards": [
       {
-        "badge": "Professional Work",
-        "title": "Dynodine Product UI",
-        "description": "Responsive frontend product work with reusable components, REST API integration, performance tuning, and cross-browser interface polish.",
-        "tags": ["React", "TypeScript", "REST"]
+        "badge": "Enterprise · The Home Depot",
+        "title": "Enterprise Angular Design System",
+        "description": "Built reusable Angular component libraries, design tokens, and Storybook documentation for enterprise-wide UI consistency. Integrated AI-powered workflows through RESTful APIs and contributed to Angular version modernization.",
+        "tags": ["Angular", "TypeScript", "Storybook", "Design System"]
       },
       {
-        "badge": "Cloud Credential",
-        "title": "AWS Developer Practice",
-        "description": "Developer foundation across Lambda, S3, DynamoDB, API Gateway, CodePipeline, and serverless architecture patterns.",
-        "tags": ["AWS", "Serverless", "CI/CD"]
+        "badge": "Enterprise · Truist Bank",
+        "title": "Digital Banking Platform",
+        "description": "Developed Angular UI screens for account dashboards, funds transfer, and customer servicing. Designed 20+ Spring Boot REST API endpoints, implemented OAuth2/JWT auth, Kafka event streams, and PostgreSQL optimization.",
+        "tags": ["Angular", "Spring Boot", "Kafka", "PostgreSQL"]
       }
     ],
     "demos": {
@@ -185,22 +185,28 @@
     ],
     "items": [
       {
-        "date": "Aug 2024 - Now",
-        "title": "Frontend Developer · Dynodine",
-        "description": "Building and maintaining responsive UIs in HTML, CSS, TypeScript, and React. Integrating REST APIs, tuning performance, and collaborating with design and backend in a startup environment.",
-        "tags": ["React", "TypeScript", "REST APIs", "Performance"]
+        "date": "Mar 2025 – Present",
+        "title": "Full Stack Software Engineer · The Home Depot",
+        "description": "Building enterprise Angular applications and reusable UI component libraries across front-end, API, and database layers. Leading Angular modernization by upgrading legacy applications to current Angular releases. Creating Storybook component libraries with design tokens and contributing to an enterprise design language. Integrating AI-powered experiences into Angular workflows via RESTful APIs. Collaborating with UX/UI designers using Figma to deliver accessible, production-ready interfaces.",
+        "tags": ["Angular", "TypeScript", "Spring Boot", "Storybook", "AI Integration", "Design Tokens"]
       },
       {
-        "date": "2025 - Now",
+        "date": "May 2023 – Feb 2025",
+        "title": "Full Stack Developer · Truist Bank",
+        "description": "Developed enterprise digital banking applications in Angular supporting account dashboards, funds transfer, payment scheduling, and transaction history. Designed and implemented 20+ Spring Boot REST API endpoints, improving service response times by ~30%. Built event-driven workflows using Apache Kafka for payments, notifications, and fraud monitoring. Implemented OAuth2/JWT authentication and role-based authorization with Spring Security. Containerized applications with Docker and deployed to AWS Kubernetes environments. Maintained Jenkins and GitLab CI/CD pipelines.",
+        "tags": ["Angular", "Spring Boot", "Kafka", "PostgreSQL", "Docker", "Kubernetes", "OAuth2"]
+      },
+      {
+        "date": "2025 – Present",
         "title": "Founder · startlearning.net",
-        "description": "Building an educational platform to make AI easier for beginners, covering prompt engineering, automation workflows, GPT, Claude, Gemini, and practical AI usage.",
-        "tags": ["AI Learning", "Prompting", "n8n", "Solo Build"]
+        "description": "Building an educational platform to make AI accessible for beginners, covering prompt engineering, n8n automations, GPT, Claude, Gemini, and practical AI agent workflows.",
+        "tags": ["AI Learning", "Prompt Engineering", "n8n", "Solo Build"]
       },
       {
-        "date": "May - Jun 2018",
-        "title": "Summer Intern · Electronics Corporation of India Limited",
-        "description": "Shipped a responsive web app with HTML, CSS, TypeScript, Bootstrap, and Angular. Built reusable UI components, integrated REST APIs, and improved accessibility and cross-browser behavior.",
-        "tags": ["Angular", "Bootstrap", "TypeScript", "APIs"]
+        "date": "Mar 2019 – Jul 2021",
+        "title": "Full Stack Software Engineer · Sanofi",
+        "description": "Developed enterprise web applications across front-end, backend, API, and database layers. Built responsive user interfaces using HTML, CSS, JavaScript/TypeScript, and component-based front-end practices. Integrated UI applications with RESTful APIs and enterprise services. Delivered features following Agile/Scrum methodologies with business stakeholders, QA, and engineering teams.",
+        "tags": ["TypeScript", "JavaScript", "REST APIs", "Java", "Agile"]
       }
     ]
   },

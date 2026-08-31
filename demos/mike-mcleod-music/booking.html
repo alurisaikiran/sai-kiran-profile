@@ -3,63 +3,251 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Book Mike McLeod Music for your Atlanta wedding, private party, corporate event, or venue performance. Contact Mike directly to check availability.">
-  <title>Booking | Mike McLeod Music</title>
+  <meta name="theme-color" content="#101010">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Primary Meta -->
+  <title>Book Mike McLeod Music | Atlanta Event Musician</title>
+  <meta name="description" content="Book Mike McLeod — Atlanta's premier solo live event musician — for weddings, corporate events, private parties, and rehearsal dinners. 25+ years, 50+ five-star reviews. Call 404-663-1407.">
+  <meta name="keywords" content="book Atlanta musician, hire Atlanta wedding musician, Atlanta event booking, live music quote Atlanta, solo looping guitarist Atlanta">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Mike McLeod">
+  <link rel="canonical" href="https://mikemcleodmusic.com/booking/">
+
+  <!-- Geo -->
+  <meta name="geo.region" content="US-GA">
+  <meta name="geo.placename" content="Atlanta, Georgia">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Mike McLeod Music">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://mikemcleodmusic.com/booking/">
+  <meta property="og:title" content="Book Mike McLeod Music | Atlanta Event Musician">
+  <meta property="og:description" content="Book live music for your Atlanta wedding, corporate event, or private party. Solo performer with a full-band sound. Call 404-663-1407 to check availability.">
+  <meta property="og:image" content="https://mikemcleodmusic.com/wp-content/uploads/2023/11/main.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="800">
+  <meta property="og:image:alt" content="Mike McLeod performing live at an Atlanta event">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Book Mike McLeod Music | Atlanta Event Musician">
+  <meta name="twitter:description" content="Book live music for your Atlanta wedding, corporate event, or private party. Call 404-663-1407 to check availability.">
+  <meta name="twitter:image" content="https://mikemcleodmusic.com/wp-content/uploads/2023/11/main.jpg">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Mike McLeod Music",
+    "url": "https://mikemcleodmusic.com",
+    "image": "https://mikemcleodmusic.com/wp-content/uploads/2023/11/main.jpg",
+    "description": "Professional solo live event musician available for Atlanta weddings, corporate events, private parties, and venue performances.",
+    "telephone": "+14046631407",
+    "email": "MikeMcLeodMusic@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Atlanta",
+      "addressRegion": "GA",
+      "addressCountry": "US"
+    },
+    "areaServed": {
+      "@type": "State",
+      "name": "Georgia"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+14046631407",
+      "email": "MikeMcLeodMusic@gmail.com",
+      "contactType": "booking",
+      "areaServed": "US",
+      "availableLanguage": "English"
+    },
+    "priceRange": "$$",
+    "sameAs": [
+      "https://www.facebook.com/MikeMcLeodMusic",
+      "https://www.youtube.com/@MikeMcLeodMusic"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mikemcleodmusic.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Booking", "item": "https://mikemcleodmusic.com/booking/" }
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Booking page redesign */
+    .booking.creative { display: grid; grid-template-columns: 1.05fr 1fr; gap: 0; padding: 0; background: var(--cream); overflow: hidden; }
+    .bk-left { position: relative; background: var(--ink); color: white; padding: 80px 6vw 80px; overflow: hidden; }
+    .bk-left::before { content: ''; position: absolute; top: -80px; right: -80px; width: 260px; height: 260px; border-radius: 50%; background: radial-gradient(circle, rgba(237,174,54,.28), transparent 70%); pointer-events: none; }
+    .bk-left::after { content: ''; position: absolute; bottom: -100px; left: -60px; width: 220px; height: 220px; border-radius: 50%; background: radial-gradient(circle, rgba(237,174,54,.14), transparent 72%); pointer-events: none; }
+    .bk-left-inner { position: relative; z-index: 1; }
+    .bk-left .eyebrow { color: var(--rust); margin: 0; }
+    .bk-left h2 { color: white; font-size: clamp(2rem, 3.4vw, 3rem); margin: 14px 0 20px; line-height: 1.02; }
+    .bk-left h2 em { font-style: italic; color: var(--rust); font-weight: 400; }
+    .bk-lead { color: rgba(255,255,255,.7); font-size: .95rem; line-height: 1.75; margin: 0 0 32px; max-width: 420px; }
+
+    .bk-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 34px; padding: 22px 0; border-top: 1px solid rgba(255,255,255,.14); border-bottom: 1px solid rgba(255,255,255,.14); }
+    .bk-stat { text-align: left; }
+    .bk-stat strong { display: block; font-family: "Archivo Black", sans-serif; font-size: 1.7rem; color: var(--rust); letter-spacing: -.02em; line-height: 1; }
+    .bk-stat span { display: block; margin-top: 6px; font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.6); line-height: 1.4; }
+
+    .bk-contact { display: flex; flex-direction: column; gap: 10px; margin-bottom: 30px; }
+    .bk-card { display: flex; align-items: center; gap: 14px; padding: 14px 18px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); color: white; text-decoration: none; transition: background .2s, border-color .2s, transform .2s; border-radius: 4px; }
+    .bk-card:hover { background: rgba(237,174,54,.12); border-color: var(--rust); transform: translateX(4px); }
+    .bk-icon { flex: 0 0 40px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--rust); color: var(--ink); border-radius: 50%; }
+    .bk-icon svg { width: 18px; height: 18px; fill: currentColor; }
+    .bk-card-meta { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+    .bk-card-meta span { font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+    .bk-card-meta strong { font-size: .88rem; font-weight: 500; color: white; letter-spacing: -.005em; word-break: break-all; }
+
+    .bk-quote { padding: 18px 20px; border-left: 3px solid var(--rust); background: rgba(255,255,255,.03); }
+    .bk-quote p { margin: 0; font-style: italic; font-size: .82rem; color: rgba(255,255,255,.78); line-height: 1.7; }
+    .bk-quote cite { display: block; margin-top: 10px; font-style: normal; font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: var(--rust); }
+
+    .bk-right { padding: 80px 6vw; display: flex; flex-direction: column; justify-content: center; }
+    .bk-right-title { margin: 0 0 4px; font-size: 1.4rem; letter-spacing: -.01em; }
+    .bk-right-sub { margin: 0 0 30px; color: var(--muted); font-size: .88rem; line-height: 1.7; }
+    .bk-right form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .bk-right label { display: block; color: var(--muted); font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; }
+    .bk-right input, .bk-right select, .bk-right textarea { width: 100%; margin-top: 8px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 4px; background: var(--paper); color: var(--ink); font-size: .9rem; transition: border-color .2s, box-shadow .2s, background .2s; }
+    .bk-right input:focus, .bk-right select:focus, .bk-right textarea:focus { outline: none; border-color: var(--rust); background: white; box-shadow: 0 0 0 3px rgba(237,174,54,.14); }
+    .bk-right textarea { resize: vertical; }
+    .bk-right .full { grid-column: 1 / -1; }
+    .bk-right .button.primary { padding: 16px 28px; font-size: .72rem; letter-spacing: .18em; display: inline-flex; align-items: center; justify-content: center; gap: 10px; transition: transform .15s, box-shadow .2s; }
+    .bk-right .button.primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(237,174,54,.35); }
+    .bk-right .button.primary svg { width: 16px; height: 16px; fill: currentColor; }
+    .bk-form-note { grid-column: 1 / -1; margin: 0; color: var(--muted); font-size: .72rem; text-align: center; }
+
+    @media (max-width: 900px) {
+      .booking.creative { grid-template-columns: 1fr; }
+      .bk-left { padding: 60px 22px; }
+      .bk-right { padding: 55px 22px; }
+      .bk-right form { grid-template-columns: 1fr; gap: 16px; }
+      .bk-stats { gap: 10px; }
+      .bk-stat strong { font-size: 1.4rem; }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
-    <a class="logo" href="index.html"><span>Mike</span> McLeod</a>
+    <a class="logo" href="index.html"><span>Mike</span> McLeod<small>Music</small></a>
     <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
     <nav>
       <a href="index.html">Home</a>
-      <a href="credentials.html">Credentials</a>
-      <a href="photos.html">Photos</a>
-      <a href="videos.html">Videos</a>
+      <a href="booking.html" class="active">Booking</a>
+      <a href="media.html">Media</a>
+      <a href="songs.html">Songs</a>
       <a href="reviews.html">Reviews</a>
-      <a class="nav-cta" href="booking.html">Booking</a>
+      <a href="clients.html">Clients</a>
+      <a href="planning-guide.html">Planning</a>
     </nav>
   </header>
 
   <main>
-    <div class="page-hero" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.75) 100%), url('https://mikemcleodmusic.com/wp-content/uploads/2023/11/main.jpg'); background-size: cover; background-position: center 20%;">
+    <div class="page-hero" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.75) 100%), url('photos/mike/fb-banner.jpg'); background-size: cover; background-position: center 20%;">
       <p class="eyebrow">Booking / Contact</p>
       <h1>Ready to book amazing live music?</h1>
-      <p>Tell Mike about the date, number of hours, location, guest count, genres, and anything else that matters for the event.</p>
+      <p>Share a few details about your event and Mike will follow up with availability, a quote, and considerations to help you plan.</p>
     </div>
 
-    <section class="booking section" id="booking">
-      <div>
-        <p class="eyebrow">Get in touch</p>
-        <h2>Let's make it happen.</h2>
-        <p>Fill out the form and Mike will get back to you about availability, pricing, and what to expect. You can also reach him directly:</p>
-        <p style="margin-top:24px;"><strong>Email:</strong> <a href="mailto:MikeMcLeodMusic@gmail.com">MikeMcLeodMusic@gmail.com</a></p>
-        <p><strong>Phone:</strong> <a href="tel:4046631407">404-663-1407</a></p>
-        <p style="margin-top:32px;color:var(--muted);font-size:.75rem;line-height:1.7;">Typical booking includes a deposit to hold the date, with the balance due the day of the event. Mike brings all equipment, arrives early to set up quietly, and stays through the agreed hours.</p>
+    <section class="booking creative" id="booking">
+      <div class="bk-left">
+        <div class="bk-left-inner">
+          <p class="eyebrow">Book Mike</p>
+          <h2>Live music,<br><em>made easy.</em></h2>
+
+          <div class="bk-stats">
+            <div class="bk-stat">
+              <strong>25+</strong>
+              <span>Years Live<br>in ATL</span>
+            </div>
+            <div class="bk-stat">
+              <strong>50+</strong>
+              <span>Five-Star<br>Reviews</span>
+            </div>
+            <div class="bk-stat">
+              <strong>1</strong>
+              <span>Full-Band<br>Sound</span>
+            </div>
+          </div>
+
+          <div class="bk-contact">
+            <a class="bk-card" href="mailto:MikeMcLeodMusic@gmail.com">
+              <span class="bk-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              </span>
+              <span class="bk-card-meta">
+                <span>Email</span>
+                <strong>MikeMcLeodMusic@gmail.com</strong>
+              </span>
+            </a>
+            <a class="bk-card" href="tel:4046631407">
+              <span class="bk-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+              </span>
+              <span class="bk-card-meta">
+                <span>Phone</span>
+                <strong>404-663-1407</strong>
+              </span>
+            </a>
+          </div>
+
+          <blockquote class="bk-quote">
+            <p>"Highlight of our event. Read the room perfectly and had guests dancing all night."</p>
+            <cite>— Verified 5-star review</cite>
+          </blockquote>
+        </div>
       </div>
-      <form>
-        <label>Name<input required type="text" placeholder="Your name"></label>
-        <label>Email<input required type="email" placeholder="you@example.com"></label>
-        <label>Event type<select><option>Private party</option><option>Wedding</option><option>Corporate event</option><option>Venue performance</option><option>Other</option></select></label>
-        <label>Event date<input type="date"></label>
-        <label>Duration<select><option value="">Select duration</option><option>1 hour</option><option>2 hours</option><option>3 hours</option><option>4 hours</option><option>5 hours</option><option>6+ hours</option></select></label>
-        <label>Location / Venue<input type="text" placeholder="Venue name &amp; address"></label>
-        <label class="full">Anything else Mike should know<textarea rows="4" placeholder="Guest count, genre requests, special songs, indoor/outdoor..."></textarea></label>
-        <button class="button primary full" type="submit">Email Mike</button>
-        <p class="form-message full" aria-live="polite"></p>
-      </form>
+
+      <div class="bk-right">
+        <h2 class="bk-right-title">Send Mike your details</h2>
+        <p class="bk-right-sub">He'll typically respond within 24 hours with availability and next steps.</p>
+        <form>
+          <label>Name<input required type="text" placeholder="Your name"></label>
+          <label>Email<input required type="email" placeholder="you@example.com"></label>
+          <label>Event type<select><option>Private Party</option><option>Neighborhood / Community Event</option><option>Corporate / Non-Profit</option><option>Wedding</option><option>Rehearsal Dinner</option><option>Concert</option><option>Other</option></select></label>
+          <label>Event date<input type="date"></label>
+          <label>Duration<select><option value="">Select duration</option><option>1 hour</option><option>2 hours</option><option>3 hours</option><option>4 hours</option><option>5 hours</option><option>6+ hours</option></select></label>
+          <label>Location / Venue<input type="text" placeholder="Venue Name or City"></label>
+          <label class="full">Anything else Mike should know<textarea rows="4" placeholder="Guest count, genre requests, special songs, indoor/outdoor..."></textarea></label>
+          <button class="button primary full" type="submit">
+            Send to Mike
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2.01 21 23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+          </button>
+          <p class="form-message full" aria-live="polite"></p>
+        </form>
+      </div>
     </section>
   </main>
 
   <footer>
-    <a class="logo" href="index.html"><span>Mike</span> McLeod</a>
+    <a class="logo" href="index.html"><span>Mike</span> McLeod<small>Music</small></a>
     <p>Solo performer. Full-band sound. Atlanta, GA. 404-663-1407.</p>
-    <div><a href="http://facebook.com/MikeMcLeodMusic" target="_blank" rel="noreferrer">Facebook</a><a href="http://www.youtube.com/@MikeMcLeodMusic" target="_blank" rel="noreferrer">YouTube</a><a href="mailto:MikeMcLeodMusic@gmail.com">Email</a></div>
+    <div class="footer-social">
+      <a href="http://facebook.com/MikeMcLeodMusic" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+      </a>
+      <a href="http://www.youtube.com/@MikeMcLeodMusic" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+      <a href="mailto:MikeMcLeodMusic@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      </a>
+    </div>
   </footer>
   <script src="script.js"></script>
 </body>

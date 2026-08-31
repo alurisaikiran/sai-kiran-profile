@@ -169,3 +169,23 @@ create policy "integrations_owner_all"
   to authenticated
   using (auth.uid() = user_id)
   with check (auth.uid() = user_id);
+
+-- ── Agent feed cache ─────────────────────────────────────────────────────────
+-- Stores the last ranked news feed so the admin page loads instantly without
+-- re-fetching external sources. Refreshed daily by the Vercel Cron job and
+-- on-demand via the manual refresh button.
+create table if not exists agent_feed_cache (
+  id         text primary key default 'latest',
+  items      jsonb not null default '[]',
+  fetched_at timestamptz not null default now(),
+  sources    jsonb not null default '{}'
+);
+
+alter table agent_feed_cache enable row level security;
+
+drop policy if exists "agent_feed_cache_auth_all" on agent_feed_cache;
+create policy "agent_feed_cache_auth_all"
+  on agent_feed_cache for all
+  to authenticated
+  using (true)
+  with check (true);
