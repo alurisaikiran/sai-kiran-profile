@@ -659,21 +659,191 @@
 .launched-meta span { color: var(--text); font-size: 14px; font-weight: 800; }
 .launched-meta .status-live { color: var(--gold); }
 
-/* ── Experience ── */
-.experience { background: var(--bg-2); }
-.timeline { display: grid; gap: 14px; }
-.timeline-item {
-  display: grid;
-  grid-template-columns: 200px minmax(0, 1fr);
-  gap: 28px;
-  padding: clamp(22px, 3vw, 32px);
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.025) !important;
-  border-color: var(--line) !important;
+/* ── Experience — sticky-stack redesign ── */
+
+.exp-section {
+  position: relative;
+  background: #0C0C0C;
+  border-radius: 48px 48px 0 0;
+  padding: clamp(4rem, 8vw, 8rem) clamp(1.25rem, 5vw, 2.5rem) 3rem;
+  z-index: 10;
+  margin-top: -2px; /* seal seam with section above */
 }
-.timeline-date { color: var(--gold); font-size: 11px; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; padding-top: 4px; }
-.timeline-item h3 { color: var(--text); margin-bottom: 10px; font-size: 20px; }
-.timeline-item p  { color: var(--text-2); line-height: 1.72; margin-bottom: 14px; }
+
+.exp-heading-wrap {
+  text-align: center;
+  margin-bottom: clamp(3rem, 6vw, 6rem);
+}
+
+.exp-eyebrow {
+  color: rgba(215, 226, 234, 0.32);
+  font-size: clamp(0.6rem, 1vw, 0.8rem);
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  margin: 0 0 1.2rem;
+}
+
+/* Override global h2 styles */
+h2.exp-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.5rem, 13vw, 11rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  max-width: none;
+  margin: 0;
+  background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.exp-cards-wrap {
+  max-width: 62rem;
+  margin: 0 auto;
+  /* viewport + 1500px = ~112px dwell after last card stacks, at any viewport height */
+  min-height: calc(100vh + 1500px);
+  position: relative;
+}
+
+/* Sticky wrapper for each card — NO transform here (breaks sticky) */
+.exp-card-sticky {
+  position: sticky;
+  width: 100%;
+}
+
+/* The visible card */
+.exp-card {
+  border-radius: 32px;
+  border: 1.5px solid rgba(215, 226, 234, 0.2);
+  background: #181818;
+  box-shadow:
+    0 16px 80px rgba(0, 0, 0, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+/* Two-column top row: giant number | company meta */
+.exp-card-top {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(0.75rem, 3vw, 2.5rem);
+  align-items: start;
+  margin-bottom: clamp(1rem, 2.5vw, 2rem);
+}
+
+.exp-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(4rem, 11vw, 9rem);
+  line-height: 0.85;
+  background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  user-select: none;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+/* Right column: date, company name, role — all right-aligned */
+.exp-card-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  min-width: 0;
+  padding-top: 6px;
+}
+
+.exp-date {
+  color: rgba(215, 226, 234, 0.38);
+  font-size: clamp(0.58rem, 1vw, 0.78rem);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Override global h3 */
+h3.exp-company {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.6rem, 3.5vw, 3.4rem);
+  line-height: 0.9;
+  color: #D7E2EA;
+  text-align: right;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0 0 0;
+  font-weight: 400;
+}
+
+.exp-role {
+  color: rgba(215, 226, 234, 0.45);
+  font-size: clamp(0.65rem, 1.3vw, 0.95rem);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: right;
+  margin: 0;
+}
+
+.exp-divider {
+  height: 1px;
+  background: rgba(215, 226, 234, 0.08);
+  margin-bottom: clamp(1rem, 2.5vw, 2rem);
+}
+
+.exp-desc {
+  color: rgba(215, 226, 234, 0.58);
+  font-size: clamp(0.82rem, 1.35vw, 1.1rem);
+  line-height: 1.78;
+  margin: 0 0 clamp(1rem, 2vw, 1.5rem);
+  max-width: 70ch;
+}
+
+.exp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.exp-tag {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(215, 226, 234, 0.18);
+  color: rgba(215, 226, 234, 0.5);
+  font-size: clamp(0.58rem, 0.85vw, 0.72rem);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.exp-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+/* Reduce sticky-wrap height at narrower viewports where cards are shorter */
+@media (max-width: 1040px) {
+  .exp-cards-wrap { min-height: calc(100vh + 1150px); }
+}
+@media (max-width: 860px) {
+  .exp-cards-wrap { min-height: calc(100vh + 1050px); }
+}
+@media (max-width: 640px) {
+  .exp-section { border-radius: 32px 32px 0 0; }
+  .exp-card { border-radius: 22px; }
+}
 
 /* ── Credentials ── */
 .credentials { background: var(--bg); }
