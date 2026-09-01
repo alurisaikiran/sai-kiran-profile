@@ -147,35 +147,66 @@
       ]
     }
   },
-  "launched": {
-    "badge": "Now Live in Production",
-    "eyebrow": "Launched Client Website",
-    "heading": "Mike McLeod Music is live at",
-    "headingLink": { "label": "mikemcleodmusic.com", "href": "https://www.mikemcleodmusic.com/" },
-    "description": "I designed, built, and shipped the official website for Mike McLeod, a professional event musician. The site is now live in production with a polished stage-ready presentation, booking-focused flow, media gallery, planning guide, client logos, and full SEO groundwork.",
-    "highlights": [
-      { "title": "Booking-first UX", "description": "Clear CTAs, planning guide, and reviews built to convert enquiries." },
-      { "title": "Media & clients", "description": "Photos, videos, songs, and client logo showcase for social proof." },
-      { "title": "SEO ready", "description": "Meta tags, Open Graph, Twitter Card, JSON-LD schema, sitemap, robots." },
-      { "title": "Mobile polished", "description": "Responsive layout tuned across desktop, tablet, and mobile." }
-    ],
-    "tags": ["HTML", "CSS", "JavaScript", "SEO", "Responsive", "Production"],
-    "actions": [
-      { "label": "Visit Live Site", "href": "https://www.mikemcleodmusic.com/", "variant": "primary", "external": true },
-      { "label": "Build Mine Like This", "href": "#contact", "variant": "secondary" }
-    ],
-    "preview": {
-      "url": "mikemcleodmusic.com",
-      "image": "/assets/previews/mike-mcleod.png",
-      "imageAlt": "Mike McLeod Music live homepage",
-      "href": "https://www.mikemcleodmusic.com/",
-      "meta": [
-        { "label": "Client", "value": "Mike McLeod" },
-        { "label": "Type", "value": "Live event musician" },
-        { "label": "Status", "value": "Shipped & Live", "highlight": true }
-      ]
+  "launched": [
+    {
+      "badge": "Now Live in Production",
+      "eyebrow": "Launched Client Website",
+      "heading": "Biryani N Grill is live at",
+      "headingLink": { "label": "biryani-n-grill.vercel.app", "href": "https://biryani-n-grill.vercel.app/" },
+      "description": "I designed, built, and shipped the website for Biryani N Grill, a modern Indian restaurant. The site features a full menu, restaurant story, gallery, and mobile-first customer experience — now live in production.",
+      "highlights": [
+        { "title": "Menu & dining experience", "description": "Full menu display with categories, descriptions, and appetizing visuals." },
+        { "title": "Mobile-first design", "description": "Responsive layout optimised for customers discovering the restaurant on their phones." },
+        { "title": "Brand presence", "description": "Rich visuals, brand colours, and storytelling that reflect the restaurant's identity." },
+        { "title": "SEO ready", "description": "Meta tags, Open Graph, and schema markup to support local discovery." }
+      ],
+      "tags": ["Restaurant", "Next.js", "Responsive", "SEO", "Production"],
+      "actions": [
+        { "label": "Visit Live Site", "href": "https://biryani-n-grill.vercel.app/", "variant": "primary", "external": true },
+        { "label": "Build Mine Like This", "href": "#contact", "variant": "secondary" }
+      ],
+      "preview": {
+        "url": "biryani-n-grill.vercel.app",
+        "image": "/assets/previews/biryani-n-grill.png",
+        "imageAlt": "Biryani N Grill live homepage",
+        "href": "https://biryani-n-grill.vercel.app/",
+        "meta": [
+          { "label": "Client", "value": "Biryani N Grill" },
+          { "label": "Type", "value": "Indian restaurant" },
+          { "label": "Status", "value": "Shipped & Live", "highlight": true }
+        ]
+      }
+    },
+    {
+      "badge": "Now Live in Production",
+      "eyebrow": "Launched Client Website",
+      "heading": "Mike McLeod Music is live at",
+      "headingLink": { "label": "mikemcleodmusic.com", "href": "https://www.mikemcleodmusic.com/" },
+      "description": "I designed, built, and shipped the official website for Mike McLeod, a professional event musician. The site is now live in production with a polished stage-ready presentation, booking-focused flow, media gallery, planning guide, client logos, and full SEO groundwork.",
+      "highlights": [
+        { "title": "Booking-first UX", "description": "Clear CTAs, planning guide, and reviews built to convert enquiries." },
+        { "title": "Media & clients", "description": "Photos, videos, songs, and client logo showcase for social proof." },
+        { "title": "SEO ready", "description": "Meta tags, Open Graph, Twitter Card, JSON-LD schema, sitemap, robots." },
+        { "title": "Mobile polished", "description": "Responsive layout tuned across desktop, tablet, and mobile." }
+      ],
+      "tags": ["HTML", "CSS", "JavaScript", "SEO", "Responsive", "Production"],
+      "actions": [
+        { "label": "Visit Live Site", "href": "https://www.mikemcleodmusic.com/", "variant": "primary", "external": true },
+        { "label": "Build Mine Like This", "href": "#contact", "variant": "secondary" }
+      ],
+      "preview": {
+        "url": "mikemcleodmusic.com",
+        "image": "/assets/previews/mike-mcleod.png",
+        "imageAlt": "Mike McLeod Music live homepage",
+        "href": "https://www.mikemcleodmusic.com/",
+        "meta": [
+          { "label": "Client", "value": "Mike McLeod" },
+          { "label": "Type", "value": "Live event musician" },
+          { "label": "Status", "value": "Shipped & Live", "highlight": true }
+        ]
+      }
     }
-  },
+  ],
   "experience": {
     "eyebrow": "Experience",
     "heading": "Where I have worked and what I shipped.",

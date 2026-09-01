@@ -101,6 +101,8 @@ export interface LaunchedContent {
   };
 }
 
+export type LaunchedSectionContent = LaunchedContent[];
+
 export interface ExperienceItem {
   date: string;
   title: string;
@@ -144,7 +146,7 @@ export interface SiteContent {
   about: AboutContent;
   skills: SkillsContent;
   projects: ProjectsContent;
-  launched: LaunchedContent;
+  launched: LaunchedSectionContent;
   experience: ExperienceContent;
   credentials: CredentialsContent;
   contact: ContactContent;

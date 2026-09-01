@@ -3,16 +3,18 @@
 import { TextField, TagField, ImageField } from "@/components/admin/fields";
 import { AddButton, ListCard } from "./ListCard";
 import { moveItem, removeAt, replaceAt } from "./helpers";
-import type { LaunchedContent } from "@/lib/content-types";
+import type { LaunchedContent, LaunchedSectionContent } from "@/lib/content-types";
 
 const EMPTY_HIGHLIGHT = { title: "", description: "" };
 
-export default function LaunchedEditor({
+function LaunchedItemEditor({
   data,
   onChange,
+  index,
 }: {
   data: LaunchedContent;
   onChange: (v: LaunchedContent) => void;
+  index: number;
 }) {
   const highlights = data.highlights ?? [];
   const meta = data.preview?.meta ?? [];
@@ -144,6 +146,35 @@ export default function LaunchedEditor({
           </button>
         </div>
       )}
+    </>
+  );
+}
+
+export default function LaunchedEditor({
+  data,
+  onChange,
+}: {
+  data: LaunchedSectionContent;
+  onChange: (v: LaunchedSectionContent) => void;
+}) {
+  return (
+    <>
+      {data.map((item, idx) => (
+        <div key={idx}>
+          <div className="admin-section-card" style={{ marginBottom: 0 }}>
+            <h2>Launched Site {idx + 1}</h2>
+          </div>
+          <LaunchedItemEditor
+            data={item}
+            index={idx}
+            onChange={(updated) => {
+              const next = [...data];
+              next[idx] = updated;
+              onChange(next);
+            }}
+          />
+        </div>
+      ))}
     </>
   );
 }
